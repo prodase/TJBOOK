@@ -5,5 +5,5 @@
 \contentsline {section}{\numberline {1.2}Apa itu program?}{4}
 \contentsline {section}{\numberline {1.3}Apa itu \textit {debugging}?}{6}
 \contentsline {subsection}{\numberline {1.3.1}Kesalahan Sintak \textit {(Syntax Error)}}{6}
-\contentsline {subsection}{\numberline {1.3.2}Kesalahan ketika menjalankan \textit {(Run-Time Error)}}{6}
-\contentsline {subsection}{\numberline {1.3.3}Kesalahan logik dan semantik \textit {(L ogic errors and sematics)}}{6}
+\contentsline {subsection}{\numberline {1.3.2}Kesalahan ketika menjalankan \textit {(Run-Time Error)}}{7}
+\contentsline {subsection}{\numberline {1.3.3}Kesalahan logik dan semantik \textit {(L ogic errors and sematics)}}{7}
