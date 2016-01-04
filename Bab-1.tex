@@ -51,7 +51,7 @@ Untuk alasan lelucon, error (keselahan) yang terdapat pada pemrograman disebut d
 Terdapat tiga jenis \textit{error} yang sering muncul dalam sebuah program yaitu \textit{syntax error}, \textit{run-time error} dan \textit{logic dan semantik error}. Penting dan sangat bermanfaat sekali bagi kamu jika kamu bisa membedakan ketiganya,  sehingga kamu dapat dengan cepat dan juga mudah dalam menelusuri kesalahan yang ada dan kemudian memperbaikinya.
 
 \subsection{Kesalahan Sintak \textit{(Syntax Error)}}
-\textit{Compiler} hanya bisa melakukan kompilasi jika kode program yang ditulis telah benar secara sintak, jika tidak maka proses kompilasi akan gagal dan kamu tidak akan dapat menjalankan program tersebut. Sintak berarti struktur dan juga aturan dari struktur dari kode program yang kamu buat.
+\textit{Compiler} hanya bisa melakukan kompilasi jika kode program yang ditulis telah benar secara sintak, jika tidak maka proses kompilasi akan gagal dan kamu tidak akan dapat menjalankan program tersebut. Sintak berarti struktur dan juga aturan dari struktur penulisan dari kode program yang kamu buat.
 
 Sebagai contoh, dalam bahasa inggris sebuah kalimat harus dimulai dengan huruf besar dan diakhiri dengan tanda titik. \\
 \texttt{ini adalah contoh kalimat yang salah secara sintak.} \\
@@ -59,7 +59,51 @@ Sebagai contoh, dalam bahasa inggris sebuah kalimat harus dimulai dengan huruf b
 
 Bagi kebanyakan pembaca, sedikit kesalahan sintak bukanlah masalah yang berarti. Sebagai contoh\textit{ kta msh bsa mmbaca dan memhami tlsan ini dngn baik} walaupu penulisan kata-katanya banyak yang tidak lengkap.
 
-Kemampuan seperti itu tidak dimiliki oleh \textit{compiler}, jika terjadi kesalahan penulisan (sintak) di kode program yang kamu buat maka \textit{compiler} akan memberitahu kamu mengenai tentang kesalahan tersebut berupa \textit{error message} dan seketika akan menghentikan proses kompilasi. Ketika itu terjadi, maka program yang kamu buat bisa dipastikan tidak akan bisa dijalankan.
+Kemampuan seperti itu tidak dimiliki oleh \textit{compiler}, jika terjadi satu satu kesalahan penulisan (sintak) di kode program yang kamu buat maka \textit{compiler} akan menampilkan pesan error \textit{error message} dan seketika itu akan menghentikan proses kompilasi. Ketika hal tersebut terjadi, maka program yang kamu buat bisa dipastikan tidak akan bisa dijalankan.
+
+Lebih buruk lagi, dalam bahasa Java terdapat lebih banyak aturan sintak dibandingkan dengan sintak yang dimiliki oleh bahasa inggris atau bahasa lainnya, dan pesan error yang tampilkan sering sekali tidak terlalu membantu. Seiring bertambahnya pengalaman kamu, maka kamu akan membuat sedikit kesalahan dan akan lebih cepat dalam menemukannya.
 \subsection{Kesalahan ketika menjalankan \textit{(Run-Time Error)}}
-\subsection{Kesalahan logik dan semantik \textit{(L
-		ogic errors and sematics)}}
+Jenis kesalahan berikutnya adalah kesalahan yang muncul ketika menjalankan program (\textit{Run-time Error}). Disebut seperti itu, karena kesalahan tersebut tidak muncul hingga program dijalankan. Di Java, sebuah \textit{run-time error} terjadi ketika \textit{interpreter} menjalankan kode bita (\textit{byte code}) dan terjadi kesalahan dalam proses tersebut.
+
+Java adalah sebuah bahasa pemrograman yang cendrung aman, artinya seluruh potensi kesalahan diupayakan dapat dideteksi oleh \textit{compiler}. Sehingga \textit{run-time error} dapat diminimalisir, khususnya untuk program-program yang sederhana.
+
+Di Java, \textit{run-time error} dikenal ddngan istilah \textit{exceptions}(pengecualian). Dan di banyak lingkungan, \textit{ecxeptions} muncul dalam bentuk \textit{windows} atau \textit{dialog box} yang berisi informasi mengenai apa yang telah terjadi dan apa yang program lakukan ketika hal tersebut terjadi. Informasi ini sangat berguna sekali ketika melakukan \textit{debugging}
+\subsection{Kesalahan logika dan semantik \textit{(Logic errors and sematics)}} 
+Jenis \textit{error} yang ketiga adalah kesalahan logika dan semantik. Jika program kamu memiliki kesalahan logika, maka program kamu akan dikompilasi dan dijalankan tanpa adanya \textit{error message}, namun tidak akan melakukan apa yang seharusnya. Melainkan akan melakukan hal yang lain. Lebih spesifiknya, program yang kamu buat tidak akan melakukan apa yang kamu perintahkan.
+
+Masalahnya adalah program yang kamu tulis bukanlah program yang kamu inginkan. Hal ini terjadi karena semantik atau makna dari kode program yang kamu buat salah. Menemukan kesalahan logika pada sebuah program adalah hal yang cukup rumit karena kamu harus bekerja secara terbalik, dimulai dari mengidentifikasi keluaran dari program dan mencoba untuk menganalisa apa yang sebenarnya terjadi.
+
+\subsection{Debugging}
+Salah satu keahlian yang sangat penting kamu kuasai pada pelajaran ini adalah \textit{debugging}. Walaupun \textit{debugging} bisa jadi membuat kamu frustasi, namun ia merupakan hal yang sangat menarik dan menantang dan merupakan bagian yang sangat bernilai dalam pemrograman.
+
+\textit{Debugging} mirip dengan pekerjaan detektif. Kamu berhadapan dengan petunjuk-petunjuk dan kamu harus menyimpulkan proses serta kejadian yang mengakibatkan hasil yang kamu lihat.
+
+\textit{Debugging} juga serupa dengan ilmu eksperimental (\textit{experimental science}). Disaat kamu mendapati program yang kamu buat mengalami \textit{error}, maka kamu akan membuat semacam dugaan (hipotesis) yang menjadi penyebab dari \textit{error} tersebut, kemudian kamu memodifikasi kode program tersebut berdasarkan hipotesis yang kamu buat, dan kemudian kamu mencoba menjalankan ulang program kamu untuk membuktikan apakah hipotesis kamu benar/tidak. Jika hipotesis kamu benar, maka kamu dapat memprediksi hasil dari modifikasi kamu, dan kamu semakin dekat dengan program yang berfungsi dengan baik. Sebaliknya, jika hipotesis kamu salah, maka kamu harus membuat hipotesis baru untuk kemudian mengulangi proses sebelumnya. Hal ini akan berlangsung secara terus menerus hingga \textit{error} dari program kamu berhasil teratasi. Sebagaimana yang dikatakan oleh \textit{Sherlock Holmes}, "Ketika kamu telah mengeliminasi hal-hal yang tidak mungkin, apa pun yang tersisa walaupun mustahil, haruslah sebuah kebenaran" (dari A. Conan Doyle's \textit{The sign of Four.})
+
+Bagi sebagian orang, pemrograman dan \textit{debugging} adalah hal yang sama. Karena pemrograman adalah sebuah proses \textit{debugging} yang bertahap dari sebuah program hingga program terebut menjalankan apa yang kamu inginkan. Idenya adalah bahwa kamu harus memualai dengan sebuah program yang bisa dijalankan untuk melakukan sesuatu, tidak peduli sekecil apapun yang bisa dilakukan. Kemudian tambahkan modifikasi kecil ke program tersebut diikuti dengan \textit{debugging}, sehingga dengan begitu kamu akan selalu memiliki sebuah program yang berjalan dengan baik dan program yang kamu buat makin lama akan semakin kompleks.
+
+Sebagai contoh, Linux adalah sebuah sistem operasi yang terdiri dari ribuan baris kode program yang pada awalnya hanyalah sebuah program sederhana yang digunakan olen Linus Trovalds untuk mengeksplorasi \textit{chip} Intel 80396. Menurut Larry Greenfield, " Salah satu proyek pertama yang dikerjakan ole Linus adalah sebuah program yang mencetak secara bergantian tulisan AAAA dan BBBB. Kemudian program ini berevolusi menjadi Linux" (dari \textit{The Linux Users' Guide} Beta Version 1).
+
+Pada bab berikutnya, saya menambahkan lebih banyak saran mengenai \textit{debugging} dan praktik-prakatik pemrograman lainnya.
+
+
+\section{Bahasa Formal dan Bahasa Natural}
+
+Bahasa natural adalah bahasa-bahasa yang digunakan oleh orang-orang untuk berbicara, contohnya seperti bahasa Inggris,Spanyol dan Prancis. Bahasa tersebut tidak dirancang oleh manusia, namun berevolusi secara natural.
+
+Bahasa formal adalah bahasa yang dirancang oleh manusia untuk aplikasi-aplikasi yang spesifik. Sebagai contoh,para matematikawan menggunakan bahasa formal dalam bentuk notasi-notasi tertentu untuk menyatakan hubungan antara bebara angka dan simbol. Pra kimiawan menggunakan bahasa formal untuk mereprsentasikan struktur kimiawi dari molekul-molekul. Dan yang paling penting adalah, 
+
+\textbf{Bahasa pemrograman adalah bahasa formal yang telah dirancang untuk mengekspresikan komputasi}
+
+Bahasa formal memiliki aturan sintak yang ketat. Sebagai contoh, $3+3=6$ adalah pernyataan matematika yang benar secara sintak, sedangkan $ 3\$=$ merupakan pernyataan yang salah. Begitu halnya juga dengan $H_{2}O$ adalah sebuah pernyataan nama zat kimia yang benar, namun tidak halnya untuk $_{2}Z_{z}$.
+
+Aturan sintak terdiri dari dua hal yaitu aturan yang berkaitan dengan simbol(\textit{token}) dan yang berkaitan dengan struktur. Toke merupakan elemen dasar dari sebuah bahasa, seperti halnya kata, angka, dan elemen kimiawi. Masalah yang terdapat pada pernyataan matematika $ 3\$=$ adalah $ \$ $ merupakan bukan token yang legal dalam matematika (paling tidak sejauh yang saya tahu). Begitu halnya dengan $_{2}Z_{z}$, tidak legal karena tidak ada elemen kimia yang memiliki singkatan $ Z_{z} $.
+
+Aturan yang kedua adalah aturan yang berkenaan dengan struktur dari sebuah pernyataan, yaitu mengenai bagaimana token-token disusun. Pernyataan matematika $ 3\$=$ adalah pernyataan yang tidak legal secara struktur, karena kamu tidak dapat meletakkan tanda sama dengan (=) di akhir dari sebuah pernyataan matematis. Sama halnya dengan penulisan $_{2}Z_{z}$ adalah tidak legal secara struktur, karena tidak boleh menempatkan \textit{superscript} di posisi paling depan.
+
+Ketika kamu membaca sebuah kalimat di bahasa Inggris atau pernyataak di bahasa formal, kamu harus mencari tahu atau memahami struktur dari kalimat tersebut (walaupun dalam bahasa natural kamu melakukannya secara tidak sadar). Proses seperti ini dikenal dengan istilah \textit{parsing} (penguraian kalimat).
+
+Walaupun bahasa natural dan bahasa formal memiliki kesamaan yang bersifat umum dalam hal token, struktur, sintak dan semantik, namun ada beberapa hal yang menjadi pembedanya, sebagaimana yang dijelaskan berikut;
+ambiguity: 
+
+
