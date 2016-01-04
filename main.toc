@@ -8,4 +8,7 @@
 \contentsline {subsection}{\numberline {1.3.2}Kesalahan ketika menjalankan \textit {(Run-Time Error)}}{7}
 \contentsline {subsection}{\numberline {1.3.3}Kesalahan logika dan semantik \textit {(Logic errors and sematics)}}{8}
 \contentsline {subsection}{\numberline {1.3.4}Debugging}{8}
-\contentsline {section}{\numberline {1.4}Bahasa Formal dan Bahasa alami}{10}
+\contentsline {section}{\numberline {1.4}Bahasa Formal dan Bahasa Alami}{10}
+\contentsline {section}{\numberline {1.5}Program Pertama}{12}
+\contentsline {section}{\numberline {1.6}Glosarium}{14}
+\contentsline {section}{\numberline {1.7}Latihan}{15}

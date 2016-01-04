@@ -87,7 +87,7 @@ Sebagai contoh, Linux adalah sebuah sistem operasi yang terdiri dari ribuan bari
 Pada bab berikutnya, saya menambahkan lebih banyak saran mengenai \textit{debugging} dan praktik-prakatik pemrograman lainnya.
 
 
-\section{Bahasa Formal dan Bahasa alami}
+\section{Bahasa Formal dan Bahasa Alami}
 
 Bahasa alami adalah bahasa-bahasa yang digunakan oleh orang-orang untuk berbicara, contohnya seperti bahasa Inggris,Spanyol dan Prancis. Bahasa tersebut tidak dirancang oleh manusia, namun berevolusi secara alami.
 
@@ -104,6 +104,94 @@ Aturan yang kedua adalah aturan yang berkenaan dengan struktur dari sebuah perny
 Ketika kamu membaca sebuah kalimat di bahasa Inggris atau pernyataak di bahasa formal, kamu harus mencari tahu atau memahami struktur dari kalimat tersebut (walaupun dalam bahasa alami kamu melakukannya secara tidak sadar). Proses seperti ini dikenal dengan istilah \textit{parsing} (penguraian kalimat).
 
 Walaupun bahasa alami dan bahasa formal memiliki kesamaan yang bersifat umum dalam hal token, struktur, sintak dan semantik, namun ada beberapa hal yang menjadi pembedanya, sebagaimana yang dijelaskan berikut;
-ambiguity(keambiguan):bahasa alami 
+\begin{description}
+	\item [keambiguan (\textit{ambiguity})]: bahasa alami penuh dengan makna yang ambigu, yang biasanya ditangani dengan menggunakan petunjuk kontekstual dan informasi lainnya. Bahsa formal dirancang untuk tidak ambigu, yang artinya pernyataan apapun yang dituliskan dalam bahasa formal hanya memiliki satu makna saja tanpa melihat konteksnya.
+	\item[pengulangan(\textit{redundancy})]: Untuk mengatasi kalimat yang ambigu dan mengurangi kesalahpahaman, maka bahasa alami sering menggunakan pengulangan. Sedangkan bahasa formal jauh lebih ringkas.
+	\item[kesastraan]: Bahasa alami adalah bahasa yang sangat sarat denga idiom dan metafora, sementara bahasa formal lebih langsung kemakna sesungguhnya.
+\end{description}
 
+Bagi orang-orang yang tumbuh dan berinteraksi lama dengan bahasa alami seringkali mengalami kesulitan untuk menyesuaikan ke bahasa formal. Dalam beberapa hal, perbedaan antara bahasa alami dan bahasa formal mirip denga perbedaan antara puisi dan prosa.
 
+\begin{description}
+	\item[Puisi] Kata yang digunakan harus selaras antara bunyi dan makna  yang diinginkan. Seluruh puisi secara keseluruhan membuat sebuah efek atau repon emosional. Keambiguan merupakan hal umum dan disengaja untuk membuat sebuah pusi.
+	\item[Prosa] Makna literal dari kata-kata jauh lebih penting dan struktur benar-benar berkontribusi terhadap makna yang diinginkan.
+	\item[Program] Makna dari sebuah program kamputer adalah tidak ambigu dan literal, serta dapat dipahami secara keseluruhan dengan analisa token dar sturkturnya.
+\end{description}
+
+Berikut ini beberapa saran untuk membaca program (dan bahasa formal lainnya). Pertama, kamu harus ingat bahwa bahasa formal jauh lebih padat daripada bahasa alami, sehingga membutuhkan waktu yang lama untuk membacanya. Sturuktur pada bahasa formal adalah hal yang sangat penting, dan bukanlah hal yang tepat jika membacanya dari atas ke bawah dan dari kiri ke kanan. Cobalah membacanya dengan belajar melakukan penguraian dari program di fikiran kamu, identifikasi token-tokenya dan terjemahkan strukturnya. Akhirnya, kamu perlu ingat bahwa detail amatlah penting dalam bahasa formal. Hal-hal kecil seperti kesalahan ejaan dan tanda baca yang biasanya kamu abaikan dalam bahasa alami, dapat menjadi perbedaan yang besar dalam bahasa formal.
+
+\section{Program Pertama}
+Secara tradisional, program pertama yang ditulis oleh orang yang baru belajar bahasa pemrograman adalah \texttt{"hello world"} karena program tersebut sederhana, hanya menampilkan tulisan \texttt{"hello world"} ke layar. Jika program tersebut ditulis dalam bahasa Java, maka bentuknya sebagai berikut;
+\begin{lstlisting}
+public class Hello{
+
+	//main: menghasilkan beberapa keluaran sederhana
+	
+	public static void main (String[] args){
+		System.out.println("Hello, world.");	
+	}
+}
+
+\end{lstlisting}
+
+Program ini mengandung beberapa hal yang cukup sulit jika dijelaskan ke para pemula.Namun program ini menyediakan preview dari topik-topik yang akan kita pelajari nanti.
+
+Program java terdiri dari definisi class yang memiliki bentuk seperti berikut:
+
+\begin{lstlisting}
+
+public class NAMAKELAS{
+
+	public static void main (String[] args){
+		PERNYATAAN	
+	}
+
+}
+
+\end{lstlisting}
+
+\texttt{NAMAKELAS} menunjukan sebuah nama kelas yang dipilih oleh programmer. Pada contoh sebelumnya, nama kelas yang dipilih adalah \texttt{Hello}.
+
+\texttt{main} adalah sebuah \textit{method}/fungsi yang merupakan kumpulan dari beberapa pernyataan. Nama \texttt{main} sendiri adalah khusus karena menandakan bagian pertama kali yang akan dijalankan dalam bahasa java. Ketika sebuah program dijalankan maka akan dimulai dari bagian \texttt{main} dan berakhir ketika program tersebut menyelesaikan pernyataan terakhir yang terdapat pada method \texttt{main}.
+
+Di dalam \textit{method} \texttt{main} dapat terdiri dari beberapa buah pernyataan, namun pada contoh di atas hanya terdapat satu pernyataan saja yaitu pernyataan untuk mencetak (\textit{print statement}) ke layar. Di Java setiap pernyataan selalu diakhiri dengan tada titik koma (;), begitu pula pada pernyataan untuk mencetak diatas. 
+
+\texttt{System.out.println} adalah sebuah \textit{method} yang telah disediakan oleh salah satu pustaka(\textit{library}) Java. Sebuah pustaka/\textit{library} adalah kumpulan definisi dari Class dan method.
+
+Java menggunakan kurung karawal (\{ dan \}) untuk mengelompokkan sesuatu secara bersama-sama. Kurung karawal terluar yang terdapat pada baris ke-1 dan ke-8 memuat definisi Class. Sementara kurung karawal yang terdalam berisi definisi dari \textit{method }\texttt{main}.
+
+Baris ke-3 yang dimulai dengan tanda gari miring dua kali (//) menandakan sebuah komentar, biasanya digunakan untuk menjelaskan kode program yang berada di bawahnya. Ketika \textit{compiler} menjumpai tanda // di sebuah program maka baris kode tersebut akan diabaikan.
+  
+\section{Glosarium}
+\begin{description}
+	\item[problem-solving:] Proses yang dilakukan untuk memformulasikan sebuah masalah, mencari alternatif solusi kemudian mewujudkan solusi yang dipilih.
+	\item[bahasa tingkat tinggi(\textit{high-level language}):] Sebuah bahasa pemrograman, seperti Java yang dirancang agar mudah dibaca dan ditulis oleh manusia.
+	\item[bahasa tingkat rendah \textit{low-level language}:] Sebuah bahasa pemrograman yang dirancang agar mudah bagi komputer untuk menjalankannya. Dikenal juga dengan sebutan "bahasa mesin" atau "bahasa assembly".
+	\item[bahasa formal:] Bahasa apa pun yang dirancang untuk tujuan yang spesifik, seperti untuk menyatkan ide-ide matematis atau program komputer. Seluruh bahasa pemrograman adalah bahasa formal.
+	\item[bahasa alami:] Bahasa apa pun yang digunakan oleh manuasi untuk berbicara dan telah berevlusi sceara alami.
+	\item[portabilitas:] Kemampuan yang dimiliki oleh sebuah program untuk dijalankan debeberapa komputer yang berbeda.
+	\item[interpretasi:] Sebuah aktifitas yang dilkakuan untuk menterjemahkan sebuah program bahasa tingkat tinggi baris demi baris.
+	\item[kompilasi:] To translate a program in a high-level language into a low-level
+	language, all at once, in preparation for later execution.
+	source code: A program in a high-level language, before being compiled.
+	object code: The output of the compiler, after translating the program.
+	executable: Another name for object code that is ready to run.
+	byte code: A special kind of object code used for Java programs. Byte code
+	is similar to a low-level language, but it is portable, like a high-level
+	language.
+	statement: A part of a program that species a computation.
+	print statement: A statement that causes output to be displayed on the
+	screen.
+	comment: A part of a program that contains information about the pro-
+	gram, but that has no eect when the program runs.
+	method: A named collection of statements.
+	library: A collection of class and method denitions.
+	bug: An error in a program.
+	syntax: The structure of a program.
+	semantics: The meaning of a program.
+	parse: To examine a program and analyze the syntactic structure.
+	syntax error: An error in a program that makes it impossible to parse (and
+	therefore impossible to compile).
+	
+\end{description}
+\section{Latihan}
