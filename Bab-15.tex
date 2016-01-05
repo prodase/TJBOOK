@@ -165,3 +165,77 @@ public class MyCanvas extends Canvas {
 \end{lstlisting}
 
 MyCanvas adalah jenis baru dari Canvas tanpa method baru atau instance variable baru, tetapi dia memodifikasi method paint. Jika anda belum melakukan latihan-latihan tersebut maka ini adalah waktu yang bagus.
+
+
+\section{Hirarki Class} %15.7
+
+Di Java semua class memperluas beberapa class lainnya. Class yang paling dasar disebut Object. Ini tidak mengandung instance variable tetapi dia menyediakan method equals dan toString diantara yang lain.
+
+Banyak class yang turunan dari Object , termasuk hampir semua class yang kita telah buat dan banyak class Java seperti java.awt.Rectangle . Pokoknya setiap class yang tidak secara eksplisit menyantumkan nama parent nya secara otomatis dia turunan dari Object class . Beberapa penurunan ada yang lebih panjang seperti javax.swing.JFrame extends java.awt.Frame, yang mana  extends Window, yang mana extends Container, yang mana extends Component, yang mana extends Object. Tidak masalah seberapa panjang rantai penurunan sifatnya yang jelas class Object adalah class paling tinggi dalam rantai penurunan sifat.
+
+Pohon keluarga dari class disebut hirarki class.  Object biasanya muncul paling atas dengan semua child class di bawahnya.
+
+\section{Design Orientasi Objek} %15.8
+
+Inheritance adalah fitur yang bagus. Beberapa program akan menjadi rumit apabila tidak memakai fitur ini. Dan juga Inheritance dapat memfasilitasi penggunakan kembali kode program.
+
+Pada satu sisi, inheritance membuat program sulit untuk di baca. Ketika anda melihat pemanggilan method, hal ini menjadi sulit di baca method mana yang dipanggil apakah dari parent atau child.
+
+Juga banyak hal yang dapat di selesaikan dengan inheritance dapat diselesaikan dengan tanpa inheritance . Alternatif umum disebut composition dimana objek baru tersusun dari object-object yang telah ada tanpa menggunakan inheritance. 
+
+\section{Daftar kata-kata}%15.9
+
+\textbf{object method} : sebuah method yang dipanggil pada sebuah object dan mengoperasikan sesuatu pada object tersebut. Object method tidak memiliki kata kunci static.
+
+\textbf{Class method} : sebuah method yang menggunakan kata kkunci static. Class method tidak dipanggil pada object dan mereka tidak memiliki current object.
+
+\textbf{Current object} : object yang mana object method dipanggil. Di dalam method, current object merujuk ke this.
+
+\textbf{Implicit} : segala sesuatu yang tidak secara langsung di sebutkan. Di dalam object method , anda dapat merujuk ke instance variables secara implisit.
+
+\textbf{Explicit} : segala sesuatu yang di sebutkan secara lengkap. Di dalam class method, semua referensi ke instance variable harus secara ekplisit.
+
+\section{Latihan}%15.10
+
+\textbf{Latihan 15.1} Download \url{http://thinkapjava.com/code/CardSoln2.java}  and \url{http://thinkapjava.com/code/CardSoln3.java}
+
+CardSoln2.java terdapat solusi dari latihan-latihan pada bab sebelumnya. Class ini hanya menggunakan class method (kecuali constructor).
+
+CardSoln3.java terdapat program yang sama, tapi kebanyakan method adalah object method. Saya membuat merge beberapa tidak berubah karena menurut saya ini akan lebih mudah di baca sebagai class method. 
+
+Ubahlah merge menjadi sebuah object method dan ubah mergeSort. Versi merge mana yang ada suka ?
+
+\textbf{Latihan 15.2} ubahlan class method tersebut menjadi object method 
+\begin{lstlisting}
+public static double abs(Complex c) {
+	return Math.sqrt(c.real * c.real + c.imag * c.imag);
+}
+\end{lstlisting}
+
+\textbf{latihan 15.3} ubahlah Object method tersebut menjadi class method 
+\begin{lstlisting}
+public boolean equals(Complex b) {
+	return(real == b.real && imag == b.imag);
+}
+\end{lstlisting}
+
+\textbf{latihan 15.4} latihan ini lanjutan dari latihan 11.3. tujuannya adalah mempraktikan syntax dari object  method dan terbiasa dengan pesan error yang berhubungan.
+\begin{enumerate}
+	\item Ubahlah method di Relational class dari class method menjadi object method dan buatlah perubahan yang diperlukan pada main
+	\item Buatlah beberapa kesalahan. Coba panggil class method sebagai object method begitu juga sebaliknya. Coba pikirkan mana yang seharusnya dan mana yang tidak dan untuk pesan erornya juga ketika kode di buat salah.
+	\item Pikirkan tentang keuntungan dan kerugian antara class dan object method. Mana yang lebih ringkas ? Mana cara yang lebih alami untuk mengekspresikan proses komputasi.
+\end{enumerate}
+
+\textbf{Latihan 15.5} tujuan dari latihan ini adalah untuk menulis program yang menghasilkan poker hand secara acak dan mengklasifikasikannya, jadi kita dapat memperkirakan kemungkinan variasi poker hand. Jika anda belum tahu apa itu poker hand, maka baca terlebih dahulu di link ini
+\url{http://en.wikipedia.org/wiki/List_of_poker_hands}
+\begin{enumerate}
+	\item Mulailah dengan \url{http://thinkapjava.com/code/CardSoln3.java} dan pastikan anda kompile dan jalankan programnya terlebih dahulu
+	\item Tulis definisi dari class yang bernama PokerHand yang menurunkan sifat Deck
+	\item Tulis method dari class Deck yang bernama deal yang membuat PokerHand, mentransfer card dari deck ke hand, dan mengembalikan object hand.
+	\item Pada method main gunakan shuffle dan deal untuk menghasilkan dan mencetak 4 PokerHand dengan lima card masing-masing. Apakah anda mendapatkan sesuatu yang menarik ?
+	\item Tuliskan method PokerHand bernama hasFlush yang mengembalikan nilai boolean yang menandakan apakah hand terdapat flush.
+	\item Tulis method bernama hasThreeKind yang menandakan apakah hand terdapat Three of a Kind.
+	\item Tuliskan looping yang menghasilkan ratusan hand dan cek apakah mereka terdapat flush atau Three of Kind. Perkirakan kemungkinan mendapatkan datu dari hand – hand itu. Bandingkan hasil anda pada kemungkinan yang ada pada \url{http://en.wikipedia.org/wiki/List_of_poker_hands}.
+	\item Tulis method yang menguji Poker Hand yang lain. Beberapa lebih mudah daripada yang lain. Anda mungkin mendapatkan bahwa hal ini akan berguna untuk menulis method helper yang bertujuan umum yang dapat digunakan lebih dari satu test 
+	\item Pada beberapa permainan Poker Hand, pemain bisa saja mendapatkan tujuh card masing-masing dan mereka membentuk lima terbaik dari 7 itu. Modifikasi program anda untuk menghasilkan 7card masing-masing hand dan hitung ulang kemungkinan yang terjadi.
+\end{enumerate}
