@@ -85,3 +85,28 @@ print word
 \end{lstlisting}
 
 Saya tidak bercanda, itu adalah keseluruhan program tetapi melakukan hal sama.
+
+\section{Menangkap Exception}
+
+Pada contoh sebelumnya, processFile dapat melempar FileNotFoundException dan IOException. Dan karena method main memanggil processFile method, maka main harus mendeklarasikan Exception yang sama pula. Pada program yang lebih besar, main method harus mendeklarasikan setiap exception jika seperti itu.
+
+Cara alternatif adalah \textbf{catch} (menangkap) exception dengan sebuah statement \textbf{try}. Berikut adalah contoh nya : 
+
+\begin{lstlisting}
+public static void main(String[] args) {
+	try {
+		processFile("words.txt");
+	} catch (Exception ex) {
+		System.out.println("That didn ' t work. Here ' s why:");
+		ex.printStackTrace();
+	}
+}
+\end{lstlisting}
+
+Struktur di atas sama seperti \textbf{if}. Percabangan pertama akan berjalan jika tanpa ada masalah, maka cabang kedua akan dilewatkan.
+
+Jika ada masalah pada percabangan pertama maka eksekusi program berlanjut pada percabangan kedua, yang mana menyesuaikan dengan kondisi Exception-nya. Pada kasus ini percabangan kedua akan mengeluarkan pesan error dan \textbf{the stack trace}.
+
+Anda dapat mengunduh kode program ini di \url{http://thinkapjava.com/code/Words.java} dan file percobaanya di \url{http://thinkapjava.com/code/words.txt}. Pastikan kedua file berada pada folder yang sama.
+
+Sekarang lanjutkan pada latihan 8.9, 8.10, dan 8.11.
