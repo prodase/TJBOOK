@@ -18,4 +18,28 @@ Ketika java mencetak object, maka dia mencetak tipe dari object(PrintStream), se
 Ada juga sebuah object yang disebut System.in yang memungkinkan menerima masukan dari keyboard. Sayangnya tidak mudah menerima masukkan dari keyboard.
 
 \section{Masukan Keyboard}
-Pertama anda harus 
+Pertama anda harus menggunakan object System.in untuk membuat sebuah InputStreamReader baru.
+
+\begin{lstlisting}
+InputStreamReader in = new InputStreamReader(System.in);
+\end{lstlisting}
+
+kemudian anda pakai object in untuk membuat object baru dari class BufferedReader
+\begin{lstlisting}
+BufferedReader keyboard = new BufferedReader(in);
+\end{lstlisting}
+
+Akhirnya anda dapat memanggil method readLine untuk mendapatkan masukkan dari keyboard dan mengubahnya ke String.
+\begin{lstlisting}
+String s = keyboard.readLine();
+System.out.println(s);
+\end{lstlisting}
+
+Hanya ada satu masalah. Ada beberapa hal yang dapat terjadi kesalahan ketika memanggil method readLine, and mereka akan melempar sebuah IOException. Sebuah Method yang melempar Exception harus menambahkan class Exception tersebut pada deklarasi method seperti berikut
+
+\begin{lstlisting}
+public static void main(String[] args) throws IOException {
+// body of main
+}
+\end{lstlisting}
+
