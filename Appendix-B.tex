@@ -1,0 +1,21 @@
+\chapter{Appendix B Input and Output in Java}
+\section{System objects} % B.1
+Class System menyediakan method-method dan object-object yang dapat menerima masukan dari keyboard, mencetak text pada layar, dan melakukan operasi file input/output (I/O). System.out adalah object untuk mengeluarkan keluaran pada layar. Ketika anda memanggil method print dan println anda sedang memanggilnya dari object System.out.
+
+Bahkan anda juga dapat mengeluarkan object System.out dengan System.out
+
+\begin{lstlisting}
+System.out.println(System.out);
+\end{lstlisting}
+
+hasilnya adalah
+\begin{lstlisting}
+java.io.PrintStream@80cc0e5
+\end{lstlisting}
+
+Ketika java mencetak object, maka dia mencetak tipe dari object(PrintStream), sebuah package dimana tipe data itu di definisikan(java.io) dan sebuah identifier unik untuk object. Pada mesin saya identifier tersebut adalah 80cc0e5, tetapi jika anda menjalankan kode di atas mungkin saja keluaran yang dihasilkan adalah berbeda.
+
+Ada juga sebuah object yang disebut System.in yang memungkinkan menerima masukan dari keyboard. Sayangnya tidak mudah menerima masukkan dari keyboard.
+
+\section{Masukan Keyboard}
+Pertama anda harus 
