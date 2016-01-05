@@ -25,7 +25,7 @@ Sebagai contoh ini adalah printCard adalah sebagai class method :
 
 \begin{lstlisting}
 public static void printCard(Card c) {
-System.out.println(ranks[c.rank] + " of " + suits[c.suit]);
+	System.out.println(ranks[c.rank] + " of " + suits[c.suit]);
 }
 \end{lstlisting}
 
@@ -33,7 +33,7 @@ berikut di tulis ulang menjadi object method
 
 \begin{lstlisting}
 public void print() {
-System.out.println(ranks[rank] + " of " + suits[suit]);
+	System.out.println(ranks[rank] + " of " + suits[suit]);
 }
 \end{lstlisting}
 
@@ -62,7 +62,7 @@ Versi standard dari method toString mengembalikan sebuah string yang mengandung 
 Sebagai contoh berikut adalah sebuah method toString untuk class Card
 \begin{lstlisting}
 public String toString() {
-return ranks[rank] + " of " + suits[suit];
+	return ranks[rank] + " of " + suits[suit];
 }
 \end{lstlisting}
 
@@ -89,14 +89,14 @@ Java menyediakan method equals yang menjalankan fungsi yang sebenarnya. Tetapi u
 Untuk Card kita memiliki sebuah mthod yang mengecek ekivalensi 
 \begin{lstlisting}
 public static boolean sameCard(Card c1, Card c2) {
-return (c1.suit == c2.suit && c1.rank == c2.rank);
+	return (c1.suit == c2.suit && c1.rank == c2.rank);
 }
 \end{lstlisting}
 
 jadi yang harus kita lakukan adalah menulis kembali sebuah object method 
 \begin{lstlisting}
 public boolean equals(Card c2) {
-return (suit == c2.suit && rank == c2.rank);
+	return (suit == c2.suit && rank == c2.rank);
 }
 \end{lstlisting}
 
@@ -110,8 +110,58 @@ System.out.println(card.equals(card2));
 Didalam equals, card adalah current object dan card2 adalah parameternya, c2. Untuk method yang mengoperasikan 2 object dengan tipe yang sama, saya terkadang menggunakan this secara eksplisit dan memanggil parameter that. 
 \begin{lstlisting}
 public boolean equals(Card that) {
-return (this.suit == that.suit && this.rank == that.rank);
+	return (this.suit == that.suit && this.rank == that.rank);
 }
 \end{lstlisting}
 
 saya rasa ini akan lebih mudah di baca.
+
+
+\section{Keanehan dan Eror} %15.5
+
+jika anda memiliki object method dan class method dalam class yang sama ini akan membingungkan. Cara yang umum untuk mengorganisir definisi class adalah dengan menaruh semua constructor di bagian atas, diikuti dengan semua object method baru kemudian class method. 
+
+Anda dapat memiliki object method dan class method dengan nama yang sama, selama keduanya tidak memiliki jumlah dan tipe data parameter yang sama. Java memutuskan versi method yang mana di ambil adalah melihat dari argument yang di lewatkan.
+
+Sekarang anda tahu apa kata kunci static, mungkin anda juga telah faham kalau begitu bahwa main adalah class method, yang mana ini berarti tidak ada current object ketika method tersebut dipanggil. Jadi selama tidak ada istilah current object di class mehod , akan muncul eror ketika menggunakan kata kunci this. Jika anda mencobanya maka anda akan mendapatkan pesan eror seperti \texttt{"Undefined variable: this"}.
+
+Dan juga anda tidak dapat merujuk ke variable instances tanpa menggunakan notasi titik dan dengan nama object. Jika anda mencobanya maka anda akan mendapatkan pesan error \texttt{"non-static variable... cannot be referenced from a static context."} yang mana maksud dari \texttt{"non static variable"} adalah \texttt{"instance variable"}.
+
+\section{Penurunan Sifat} %15.6
+
+Fitur yang pasti ada dalam pemrograman berorientasi objek adalah inheritance (penurunan sifat) . \textbf{Inheritance} adalah kemampuan untuk mendefinisikan sebuah class baru yang merupakan versi modifikasi dari class yang telah ada. Class yang telah ada sebelumnya itu disebut \textbf{parent} class sedangkan class baru disebut \textbf{child} class. 
+
+Keuntungan utama dari fitur ini adalah bahwa anda dapat menambahkan method dan instances variable tanpa memodifikasi parent. 
+
+Jika anda melakukan latihan GridWorld (Bab 5 dan 10) maka anda telah melihat contoh dari inheritance :
+
+\begin{lstlisting}
+public class BoxBug extends Bug {
+	private int steps;
+	private int sideLength;
+	public BoxBug(int length) {
+		steps = 0;
+		sideLength = length;
+	}
+}
+\end{lstlisting}
+
+BoxBug memperluas sifat Bug yang mana artinya BoxBug adalah class baru dari Bug yang mana menurutkan method dan instance variables dari Bug. Sebagai tambahan :
+
+\begin{itemize}
+	\item{child class dapat memiliki instance variables tambahan pada contoh ini BoxBug memiliki steps dan sideLength. }
+	\item{Child dapat memiliki tambahan method pada contoh ini BoxBug memiliki constructor tambahan yang memiliki sebuah parameter integer.}
+	\item{Child dapat memodifikasi sebuah method dari parent. Pada contoh ini child menyediakan act (tidak di tunjukkan di sini) yang mana memodifikasi method act milik parent.}
+\end{itemize}
+
+Jika anda melakukan latihan Graphics di Appendix A, anda melihat contoh yang lain:
+
+\begin{lstlisting}
+public class MyCanvas extends Canvas {
+	public void paint(Graphics g) {
+		g.fillOval(100, 100, 200, 200);
+	}
+}
+\end{lstlisting}
+
+MyCanvas adalah jenis baru dari Canvas tanpa method baru atau instance variable baru, tetapi dia memodifikasi method paint. Jika anda belum melakukan latihan-latihan tersebut maka ini adalah waktu yang bagus.
