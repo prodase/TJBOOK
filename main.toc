@@ -11,4 +11,4 @@
 \contentsline {section}{\numberline {1.4}Bahasa Formal dan Bahasa Alami}{10}
 \contentsline {section}{\numberline {1.5}Program Pertama}{12}
 \contentsline {section}{\numberline {1.6}Glosarium}{14}
-\contentsline {section}{\numberline {1.7}Latihan}{15}
+\contentsline {section}{\numberline {1.7}Latihan}{16}
