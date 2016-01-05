@@ -77,3 +77,41 @@ atau anda dapat memanggil nya melalui method println
 \begin{lstlisting}
 System.out.println(card);
 \end{lstlisting}
+
+\section{method Equal} %15.4
+
+Pada subbab 13.4 kita telah membicarakan tentang dua notasi persamaan : persamaan, artinya bahwa dua variabel merujuk pada objek yang sama, dan ekivalensi, artinya bahwa mereka memiliki nilai yang sama.
+
+operator == untuk menguji persamaan, tetapi tidak ada operator yang dapat menguji ekivalensi, karena arti dari \texttt{"Ekivalensi"} di sini artinya bergantung pada tipe objeknya. Sebagai gantinya, Objek memiliki method yang bernama equals yang mendefinisikan ekivalensi.
+
+Java menyediakan method equals yang menjalankan fungsi yang sebenarnya. Tetapi untuk buatan user, hanya sebatas melakukan persamaan saja, yang mana tidak seperti yang anda inginkan.
+
+Untuk Card kita memiliki sebuah mthod yang mengecek ekivalensi 
+\begin{lstlisting}
+public static boolean sameCard(Card c1, Card c2) {
+return (c1.suit == c2.suit && c1.rank == c2.rank);
+}
+\end{lstlisting}
+
+jadi yang harus kita lakukan adalah menulis kembali sebuah object method 
+\begin{lstlisting}
+public boolean equals(Card c2) {
+return (suit == c2.suit && rank == c2.rank);
+}
+\end{lstlisting}
+
+saya menghapus static dan parameter pertama , c1, dan berikut bagaimana method tersebut di panggil
+\begin{lstlisting}
+Card card = new Card(1, 1);
+Card card2 = new Card(1, 1);
+System.out.println(card.equals(card2));
+\end{lstlisting}
+
+Didalam equals, card adalah current object dan card2 adalah parameternya, c2. Untuk method yang mengoperasikan 2 object dengan tipe yang sama, saya terkadang menggunakan this secara eksplisit dan memanggil parameter that. 
+\begin{lstlisting}
+public boolean equals(Card that) {
+return (this.suit == that.suit && this.rank == that.rank);
+}
+\end{lstlisting}
+
+saya rasa ini akan lebih mudah di baca.
