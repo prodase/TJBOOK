@@ -52,3 +52,28 @@ card.print();
 \end{lstlisting}
 
 ketika anda memanggil sebuah method dari sebuah objek, objek tersebut menjadi current object (objek yang sekang sedang aktif) juga bisa disebut this. Didalam method print kata kunci this merujuk pada objek card yang mana sebagai objek dari method tersebut sedang di panggil.
+
+\section{Method toString} %15.3
+
+setiap objek memiliki sebuah method bernama toString yang mana mengembalikan nilai string representasi dari objeknya. Ketika anda mencetak sebuah objek dengan menggunakan method print atau println java memanggil method toString.
+
+Versi standard dari method toString mengembalikan sebuah string yang mengandung tipe object dan sebuah identifier unik(lihat subbab 11.6). ketika anda mendefinisikan sebuah tipe objek baru anda dapat override (memodifikasi) perilaku dasar dengan menuliskan method baru dengan perilaku yang anda inginkan.
+
+Sebagai contoh berikut adalah sebuah method toString untuk class Card
+\begin{lstlisting}
+public String toString() {
+return ranks[rank] + " of " + suits[suit];
+}
+\end{lstlisting}
+
+tipe data pengembalian nya adalah String dan tidak ada parameter. Anda dapat memanggil method toString dengan cara biasanya :
+
+\begin{lstlisting}
+Card card = new Card(1, 1);
+String s = card.toString();
+\end{lstlisting}
+
+atau anda dapat memanggil nya melalui method println 
+\begin{lstlisting}
+System.out.println(card);
+\end{lstlisting}
