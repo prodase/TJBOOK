@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.15)  5 JAN 2016 15:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.15)  5 JAN 2016 16:03
 entering extended mode
 **main.tex
 (main.tex
@@ -825,6 +825,11 @@ Overfull \hbox (22.59886pt too wide) in paragraph at lines 188--189
 []\OT1/cmr/m/n/12 (-20) Sebuah ke-sala-han struk-tur penulisan
  []
 
+
+Overfull \hbox (0.87123pt too wide) in paragraph at lines 190--191
+[]\OT1/cmr/m/n/12 (-20) Sebuah ke-sala-han pada se-buah pro-
+ []
+
 ) [16]
 runsystem(makeindex -s example_style.ist main.idx)...executed (allowed).
 
@@ -858,7 +863,7 @@ MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (24 pages, 277531 bytes).
+Output written on main.pdf (24 pages, 277767 bytes).
 PDF statistics:
  194 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
