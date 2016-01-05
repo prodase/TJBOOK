@@ -1,0 +1,112 @@
+\chapter{Appendix B Input and Output in Java}
+\section{System objects} % B.1
+Class System menyediakan method-method dan object-object yang dapat menerima masukan dari keyboard, mencetak text pada layar, dan melakukan operasi file input/output (I/O). System.out adalah object untuk mengeluarkan keluaran pada layar. Ketika anda memanggil method print dan println anda sedang memanggilnya dari object System.out.
+
+Bahkan anda juga dapat mengeluarkan object System.out dengan System.out
+
+\begin{lstlisting}
+System.out.println(System.out);
+\end{lstlisting}
+
+hasilnya adalah
+\begin{lstlisting}
+java.io.PrintStream@80cc0e5
+\end{lstlisting}
+
+Ketika java mencetak object, maka dia mencetak tipe dari object(PrintStream), sebuah package dimana tipe data itu di definisikan(java.io) dan sebuah identifier unik untuk object. Pada mesin saya identifier tersebut adalah 80cc0e5, tetapi jika anda menjalankan kode di atas mungkin saja keluaran yang dihasilkan adalah berbeda.
+
+Ada juga sebuah object yang disebut System.in yang memungkinkan menerima masukan dari keyboard. Sayangnya tidak mudah menerima masukkan dari keyboard.
+
+\section{Masukan Keyboard}
+Pertama anda harus menggunakan object System.in untuk membuat sebuah InputStreamReader baru.
+
+\begin{lstlisting}
+InputStreamReader in = new InputStreamReader(System.in);
+\end{lstlisting}
+
+kemudian anda pakai object in untuk membuat object baru dari class BufferedReader
+\begin{lstlisting}
+BufferedReader keyboard = new BufferedReader(in);
+\end{lstlisting}
+
+Akhirnya anda dapat memanggil method readLine untuk mendapatkan masukkan dari keyboard dan mengubahnya ke String.
+\begin{lstlisting}
+String s = keyboard.readLine();
+System.out.println(s);
+\end{lstlisting}
+
+Hanya ada satu masalah. Ada beberapa hal yang dapat terjadi kesalahan ketika memanggil method readLine, and mereka akan melempar sebuah IOException. Sebuah Method yang melempar Exception harus menambahkan class Exception tersebut pada deklarasi method seperti berikut
+
+\begin{lstlisting}
+public static void main(String[] args) throws IOException {
+// body of main
+}
+\end{lstlisting}
+
+\section{Masukan File}
+
+Berikut adalah program yang membaca baris-baris dari sebuah file dan mencetaknya :
+
+\begin{lstlisting}
+
+import java.io.*;
+public class Words {
+
+	public static void main(String[] args)
+	throws FileNotFoundException, IOException {
+		processFile("words.txt");
+	}
+	
+	public static void processFile(String filename)
+	throws FileNotFoundException, IOException {
+		FileReader fileReader = new FileReader(filename);
+		BufferedReader in = new BufferedReader(fileReader);
+		while (true) {
+
+			String s = in.readLine();
+			if (s == null) break;
+			System.out.println(s);
+		}
+	}
+}
+
+\end{lstlisting}
+
+Pada baris pertama meng-import java.io, sebuah package yang berisi FileReader, BufferedReader dan class lainnya yang berhubungan dengan i/o. Tanda bitang (*) menandakan mengimport semua class pada package tersebut.
+
+
+Berikut program yang sama ditulis dalam bahas Python:
+
+\begin{lstlisting}
+
+for word in open( ' words.txt ' ):
+print word
+
+\end{lstlisting}
+
+Saya tidak bercanda, itu adalah keseluruhan program tetapi melakukan hal sama.
+
+\section{Menangkap Exception}
+
+Pada contoh sebelumnya, processFile dapat melempar FileNotFoundException dan IOException. Dan karena method main memanggil processFile method, maka main harus mendeklarasikan Exception yang sama pula. Pada program yang lebih besar, main method harus mendeklarasikan setiap exception jika seperti itu.
+
+Cara alternatif adalah \textbf{catch} (menangkap) exception dengan sebuah statement \textbf{try}. Berikut adalah contoh nya : 
+
+\begin{lstlisting}
+public static void main(String[] args) {
+	try {
+		processFile("words.txt");
+	} catch (Exception ex) {
+		System.out.println("That didn ' t work. Here ' s why:");
+		ex.printStackTrace();
+	}
+}
+\end{lstlisting}
+
+Struktur di atas sama seperti \textbf{if}. Percabangan pertama akan berjalan jika tanpa ada masalah, maka cabang kedua akan dilewatkan.
+
+Jika ada masalah pada percabangan pertama maka eksekusi program berlanjut pada percabangan kedua, yang mana menyesuaikan dengan kondisi Exception-nya. Pada kasus ini percabangan kedua akan mengeluarkan pesan error dan \textbf{the stack trace}.
+
+Anda dapat mengunduh kode program ini di \url{http://thinkapjava.com/code/Words.java} dan file percobaanya di \url{http://thinkapjava.com/code/words.txt}. Pastikan kedua file berada pada folder yang sama.
+
+Sekarang lanjutkan pada latihan 8.9, 8.10, dan 8.11.

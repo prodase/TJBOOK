@@ -1,0 +1,241 @@
+\chapter{Pemrograman Berorientasi Objek}
+\section{Gaya dan Bahasa Pemrograman} %15.1
+
+banyak jenis bahasa pemrograman dan hampir banyak juga gaya pemrograman (kadang disebut paradigma). Program-program yang telah kita buat sebelumnya adalah bergaya prosedural, karena menitik beratkan spesifik pada prosedur yang dilakukan komputer.
+
+Kebanyakan program Java adalah berorientasi objek, yang mana berfokus pada objek-objek dan interaksi-interaksi mereka. Berikut adalah karakteristik dari Pemrograman Berorientasi Objek :
+
+\begin{itemize}
+	\item{Objek selalu merepresentasikan entitas di dunia nyata. Pada bab sebelumnya, membuat class Deck adalah satu langkah menuju Pemrograman Berorientasi Objek.}
+	\item{Kebanyakan dari method-method dalam class Deck adalah method objek(seperti method-method yang anda panggil pada Strings) daripada method class(seperti method-method pada class Math). Method-method yang telah kita tulis sejauh ini adalah method class. Pada bab ini kita akan menulis beberapa method objek.}
+	\item{Objek-objek saling terisolasi satu sama lain 	dengan membatasi bagaimana mereka berinteraksi, khususnya dengan mencegah pengaksesan instance variables(attribute objek/variabel instance) tanpa dengan memanggil method.}
+	\item{Class teroganisir dalam pohon keluarga dimana class-class baru memperluas(menurunkan sifat) dari class yang telah ada, menambahkan method baru dan menggantikan yang lain.}
+\end{itemize}
+
+Pada bab ini saya menerjemahkan program Card dari bab sebelumnya dari procedural ke gaya orientasi objek. Anda dapat mengunduh source code dari bab ini dari \url{http://thinkapjava.com/code/Card3.java}
+
+\section{Method Objek dan Class Method} % 15.2
+
+Ada dua jenis method pada Java yaitu class method dan object method. Class Method di identifikasi dengan kata kunci static pada baris pertamanya. Dan method yang tidak ada kata kunci static adalah object method.
+
+Meskipun kita belum menulis object method, beberapa telah kita panggil. Kapan saja anda memanggil sebuah method pada sebuah objek adalah Object Method. Sebagai contoh charAt dan method lain yang kita panggil dari objek-objek String semua itu adalah juga merupakan object method. 
+
+Apapun yang dapat di tulis sebagai class method dapat juga ditulis sebagai object method begitu juga sebaliknya. Tetapi terkadang lebih natural untuk menggunakan salah satu di antaranya.
+Sebagai contoh ini adalah printCard adalah sebagai class method :
+
+\begin{lstlisting}
+public static void printCard(Card c) {
+	System.out.println(ranks[c.rank] + " of " + suits[c.suit]);
+}
+\end{lstlisting}
+
+berikut di tulis ulang menjadi object method 
+
+\begin{lstlisting}
+public void print() {
+	System.out.println(ranks[rank] + " of " + suits[suit]);
+}
+\end{lstlisting}
+
+berikut adalah perubahannya :
+\begin{enumerate}
+	\item Saya menghilangkan kata kunci static
+	\item Saya mengubah nama methodnya menjadi lebih idiomatis
+	\item Saya menghilangkan parameternya
+	\item Didalam object method anda dapat merujuk ke instance variable sebagaimana jika variable tersebut adalah local variable (variable yang di deklarasikan di dalam body method). Jadi saya mengubah c.rank menjadi rank. Dan begitu juga untuk suit.
+\end{enumerate}
+
+Berikut adalah bagaimana method tersebut dipanggil :
+\begin{lstlisting}
+Card card = new Card(1,1);
+card.print();
+\end{lstlisting}
+
+ketika anda memanggil sebuah method dari sebuah objek, objek tersebut menjadi current object (objek yang sekang sedang aktif) juga bisa disebut this. Didalam method print kata kunci this merujuk pada objek card yang mana sebagai objek dari method tersebut sedang di panggil.
+
+\section{Method toString} %15.3
+
+setiap objek memiliki sebuah method bernama toString yang mana mengembalikan nilai string representasi dari objeknya. Ketika anda mencetak sebuah objek dengan menggunakan method print atau println java memanggil method toString.
+
+Versi standard dari method toString mengembalikan sebuah string yang mengandung tipe object dan sebuah identifier unik(lihat subbab 11.6). ketika anda mendefinisikan sebuah tipe objek baru anda dapat override (memodifikasi) perilaku dasar dengan menuliskan method baru dengan perilaku yang anda inginkan.
+
+Sebagai contoh berikut adalah sebuah method toString untuk class Card
+\begin{lstlisting}
+public String toString() {
+	return ranks[rank] + " of " + suits[suit];
+}
+\end{lstlisting}
+
+tipe data pengembalian nya adalah String dan tidak ada parameter. Anda dapat memanggil method toString dengan cara biasanya :
+
+\begin{lstlisting}
+Card card = new Card(1, 1);
+String s = card.toString();
+\end{lstlisting}
+
+atau anda dapat memanggil nya melalui method println 
+\begin{lstlisting}
+System.out.println(card);
+\end{lstlisting}
+
+\section{method Equal} %15.4
+
+Pada subbab 13.4 kita telah membicarakan tentang dua notasi persamaan : persamaan, artinya bahwa dua variabel merujuk pada objek yang sama, dan ekivalensi, artinya bahwa mereka memiliki nilai yang sama.
+
+operator == untuk menguji persamaan, tetapi tidak ada operator yang dapat menguji ekivalensi, karena arti dari \texttt{"Ekivalensi"} di sini artinya bergantung pada tipe objeknya. Sebagai gantinya, Objek memiliki method yang bernama equals yang mendefinisikan ekivalensi.
+
+Java menyediakan method equals yang menjalankan fungsi yang sebenarnya. Tetapi untuk buatan user, hanya sebatas melakukan persamaan saja, yang mana tidak seperti yang anda inginkan.
+
+Untuk Card kita memiliki sebuah mthod yang mengecek ekivalensi 
+\begin{lstlisting}
+public static boolean sameCard(Card c1, Card c2) {
+	return (c1.suit == c2.suit && c1.rank == c2.rank);
+}
+\end{lstlisting}
+
+jadi yang harus kita lakukan adalah menulis kembali sebuah object method 
+\begin{lstlisting}
+public boolean equals(Card c2) {
+	return (suit == c2.suit && rank == c2.rank);
+}
+\end{lstlisting}
+
+saya menghapus static dan parameter pertama , c1, dan berikut bagaimana method tersebut di panggil
+\begin{lstlisting}
+Card card = new Card(1, 1);
+Card card2 = new Card(1, 1);
+System.out.println(card.equals(card2));
+\end{lstlisting}
+
+Didalam equals, card adalah current object dan card2 adalah parameternya, c2. Untuk method yang mengoperasikan 2 object dengan tipe yang sama, saya terkadang menggunakan this secara eksplisit dan memanggil parameter that. 
+\begin{lstlisting}
+public boolean equals(Card that) {
+	return (this.suit == that.suit && this.rank == that.rank);
+}
+\end{lstlisting}
+
+saya rasa ini akan lebih mudah di baca.
+
+
+\section{Keanehan dan Eror} %15.5
+
+jika anda memiliki object method dan class method dalam class yang sama ini akan membingungkan. Cara yang umum untuk mengorganisir definisi class adalah dengan menaruh semua constructor di bagian atas, diikuti dengan semua object method baru kemudian class method. 
+
+Anda dapat memiliki object method dan class method dengan nama yang sama, selama keduanya tidak memiliki jumlah dan tipe data parameter yang sama. Java memutuskan versi method yang mana di ambil adalah melihat dari argument yang di lewatkan.
+
+Sekarang anda tahu apa kata kunci static, mungkin anda juga telah faham kalau begitu bahwa main adalah class method, yang mana ini berarti tidak ada current object ketika method tersebut dipanggil. Jadi selama tidak ada istilah current object di class mehod , akan muncul eror ketika menggunakan kata kunci this. Jika anda mencobanya maka anda akan mendapatkan pesan eror seperti \texttt{"Undefined variable: this"}.
+
+Dan juga anda tidak dapat merujuk ke variable instances tanpa menggunakan notasi titik dan dengan nama object. Jika anda mencobanya maka anda akan mendapatkan pesan error \texttt{"non-static variable... cannot be referenced from a static context."} yang mana maksud dari \texttt{"non static variable"} adalah \texttt{"instance variable"}.
+
+\section{Penurunan Sifat} %15.6
+
+Fitur yang pasti ada dalam pemrograman berorientasi objek adalah inheritance (penurunan sifat) . \textbf{Inheritance} adalah kemampuan untuk mendefinisikan sebuah class baru yang merupakan versi modifikasi dari class yang telah ada. Class yang telah ada sebelumnya itu disebut \textbf{parent} class sedangkan class baru disebut \textbf{child} class. 
+
+Keuntungan utama dari fitur ini adalah bahwa anda dapat menambahkan method dan instances variable tanpa memodifikasi parent. 
+
+Jika anda melakukan latihan GridWorld (Bab 5 dan 10) maka anda telah melihat contoh dari inheritance :
+
+\begin{lstlisting}
+public class BoxBug extends Bug {
+	private int steps;
+	private int sideLength;
+	public BoxBug(int length) {
+		steps = 0;
+		sideLength = length;
+	}
+}
+\end{lstlisting}
+
+BoxBug memperluas sifat Bug yang mana artinya BoxBug adalah class baru dari Bug yang mana menurutkan method dan instance variables dari Bug. Sebagai tambahan :
+
+\begin{itemize}
+	\item{child class dapat memiliki instance variables tambahan pada contoh ini BoxBug memiliki steps dan sideLength. }
+	\item{Child dapat memiliki tambahan method pada contoh ini BoxBug memiliki constructor tambahan yang memiliki sebuah parameter integer.}
+	\item{Child dapat memodifikasi sebuah method dari parent. Pada contoh ini child menyediakan act (tidak di tunjukkan di sini) yang mana memodifikasi method act milik parent.}
+\end{itemize}
+
+Jika anda melakukan latihan Graphics di Appendix A, anda melihat contoh yang lain:
+
+\begin{lstlisting}
+public class MyCanvas extends Canvas {
+	public void paint(Graphics g) {
+		g.fillOval(100, 100, 200, 200);
+	}
+}
+\end{lstlisting}
+
+MyCanvas adalah jenis baru dari Canvas tanpa method baru atau instance variable baru, tetapi dia memodifikasi method paint. Jika anda belum melakukan latihan-latihan tersebut maka ini adalah waktu yang bagus.
+
+
+\section{Hirarki Class} %15.7
+
+Di Java semua class memperluas beberapa class lainnya. Class yang paling dasar disebut Object. Ini tidak mengandung instance variable tetapi dia menyediakan method equals dan toString diantara yang lain.
+
+Banyak class yang turunan dari Object , termasuk hampir semua class yang kita telah buat dan banyak class Java seperti java.awt.Rectangle . Pokoknya setiap class yang tidak secara eksplisit menyantumkan nama parent nya secara otomatis dia turunan dari Object class . Beberapa penurunan ada yang lebih panjang seperti javax.swing.JFrame extends java.awt.Frame, yang mana  extends Window, yang mana extends Container, yang mana extends Component, yang mana extends Object. Tidak masalah seberapa panjang rantai penurunan sifatnya yang jelas class Object adalah class paling tinggi dalam rantai penurunan sifat.
+
+Pohon keluarga dari class disebut hirarki class.  Object biasanya muncul paling atas dengan semua child class di bawahnya.
+
+\section{Design Orientasi Objek} %15.8
+
+Inheritance adalah fitur yang bagus. Beberapa program akan menjadi rumit apabila tidak memakai fitur ini. Dan juga Inheritance dapat memfasilitasi penggunakan kembali kode program.
+
+Pada satu sisi, inheritance membuat program sulit untuk di baca. Ketika anda melihat pemanggilan method, hal ini menjadi sulit di baca method mana yang dipanggil apakah dari parent atau child.
+
+Juga banyak hal yang dapat di selesaikan dengan inheritance dapat diselesaikan dengan tanpa inheritance . Alternatif umum disebut composition dimana objek baru tersusun dari object-object yang telah ada tanpa menggunakan inheritance. 
+
+\section{Daftar kata-kata}%15.9
+
+\textbf{object method} : sebuah method yang dipanggil pada sebuah object dan mengoperasikan sesuatu pada object tersebut. Object method tidak memiliki kata kunci static.
+
+\textbf{Class method} : sebuah method yang menggunakan kata kkunci static. Class method tidak dipanggil pada object dan mereka tidak memiliki current object.
+
+\textbf{Current object} : object yang mana object method dipanggil. Di dalam method, current object merujuk ke this.
+
+\textbf{Implicit} : segala sesuatu yang tidak secara langsung di sebutkan. Di dalam object method , anda dapat merujuk ke instance variables secara implisit.
+
+\textbf{Explicit} : segala sesuatu yang di sebutkan secara lengkap. Di dalam class method, semua referensi ke instance variable harus secara ekplisit.
+
+\section{Latihan}%15.10
+
+\textbf{Latihan 15.1} Download \url{http://thinkapjava.com/code/CardSoln2.java}  and \url{http://thinkapjava.com/code/CardSoln3.java}
+
+CardSoln2.java terdapat solusi dari latihan-latihan pada bab sebelumnya. Class ini hanya menggunakan class method (kecuali constructor).
+
+CardSoln3.java terdapat program yang sama, tapi kebanyakan method adalah object method. Saya membuat merge beberapa tidak berubah karena menurut saya ini akan lebih mudah di baca sebagai class method. 
+
+Ubahlah merge menjadi sebuah object method dan ubah mergeSort. Versi merge mana yang ada suka ?
+
+\textbf{Latihan 15.2} ubahlan class method tersebut menjadi object method 
+\begin{lstlisting}
+public static double abs(Complex c) {
+	return Math.sqrt(c.real * c.real + c.imag * c.imag);
+}
+\end{lstlisting}
+
+\textbf{latihan 15.3} ubahlah Object method tersebut menjadi class method 
+\begin{lstlisting}
+public boolean equals(Complex b) {
+	return(real == b.real && imag == b.imag);
+}
+\end{lstlisting}
+
+\textbf{latihan 15.4} latihan ini lanjutan dari latihan 11.3. tujuannya adalah mempraktikan syntax dari object  method dan terbiasa dengan pesan error yang berhubungan.
+\begin{enumerate}
+	\item Ubahlah method di Relational class dari class method menjadi object method dan buatlah perubahan yang diperlukan pada main
+	\item Buatlah beberapa kesalahan. Coba panggil class method sebagai object method begitu juga sebaliknya. Coba pikirkan mana yang seharusnya dan mana yang tidak dan untuk pesan erornya juga ketika kode di buat salah.
+	\item Pikirkan tentang keuntungan dan kerugian antara class dan object method. Mana yang lebih ringkas ? Mana cara yang lebih alami untuk mengekspresikan proses komputasi.
+\end{enumerate}
+
+\textbf{Latihan 15.5} tujuan dari latihan ini adalah untuk menulis program yang menghasilkan poker hand secara acak dan mengklasifikasikannya, jadi kita dapat memperkirakan kemungkinan variasi poker hand. Jika anda belum tahu apa itu poker hand, maka baca terlebih dahulu di link ini
+\url{http://en.wikipedia.org/wiki/List_of_poker_hands}
+\begin{enumerate}
+	\item Mulailah dengan \url{http://thinkapjava.com/code/CardSoln3.java} dan pastikan anda kompile dan jalankan programnya terlebih dahulu
+	\item Tulis definisi dari class yang bernama PokerHand yang menurunkan sifat Deck
+	\item Tulis method dari class Deck yang bernama deal yang membuat PokerHand, mentransfer card dari deck ke hand, dan mengembalikan object hand.
+	\item Pada method main gunakan shuffle dan deal untuk menghasilkan dan mencetak 4 PokerHand dengan lima card masing-masing. Apakah anda mendapatkan sesuatu yang menarik ?
+	\item Tuliskan method PokerHand bernama hasFlush yang mengembalikan nilai boolean yang menandakan apakah hand terdapat flush.
+	\item Tulis method bernama hasThreeKind yang menandakan apakah hand terdapat Three of a Kind.
+	\item Tuliskan looping yang menghasilkan ratusan hand dan cek apakah mereka terdapat flush atau Three of Kind. Perkirakan kemungkinan mendapatkan datu dari hand – hand itu. Bandingkan hasil anda pada kemungkinan yang ada pada \url{http://en.wikipedia.org/wiki/List_of_poker_hands}.
+	\item Tulis method yang menguji Poker Hand yang lain. Beberapa lebih mudah daripada yang lain. Anda mungkin mendapatkan bahwa hal ini akan berguna untuk menulis method helper yang bertujuan umum yang dapat digunakan lebih dari satu test 
+	\item Pada beberapa permainan Poker Hand, pemain bisa saja mendapatkan tujuh card masing-masing dan mereka membentuk lima terbaik dari 7 itu. Modifikasi program anda untuk menghasilkan 7card masing-masing hand dan hitung ulang kemungkinan yang terjadi.
+\end{enumerate}
