@@ -1,0 +1,167 @@
+\chapter{Grafis}
+\section{A.1 Grafis Java 2D}
+Lampiran ini memberikan contoh dan latihan yang menunjukan grafik Java. Ada beberapa cara untuk membuat grafik di Java. Sederhananya adalah dengan menggunakan \textbf{java.awt.Graphics}. Berikut ini adalah contoh lengkapnya :
+
+\begin{list}
+	import  java.awt.Canvas;
+	import  java.awt.Graphics;
+	import  javax.swing.JFrame;
+	
+	public class MyCanvas extends Canvas {
+	public static void main(String[] args) {
+	//buat framenya
+	JFrame frame = new JFrame();
+	Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	//tambahkan canvasnya
+	Canvas canvas = new MyCanvas();
+	canvas.setSize(400, 400);
+	frame.getContentPane().add(canvas);
+	
+	//tampilkan framenya
+	frame.pack();
+	frame.setVisible(true);
+	}
+	
+	public void paint(Graphics g) {
+	//gambar sebuah cirle (lingkaran)
+	g.fillOval(100, 100, 200, 200);
+	}
+}
+\end{list}
+
+\textbf{Note:}anda dapat mendownload code diatas melalui link ini : $http://thinkapjava.com/code/MyCanvas.java.$
+
+Pada baris pertama, import sebuah class yang kita butuhkan dari \textbf{java.awt} dan \textbf{javax.swing}.
+
+\textbf{MyCanvas} extends \textbf{Canvas}, yang berarti bahwa object MyCanvas adalah sejenis Canvas yang menyediakan method untuk menggambar objek grafik.
+
+Dalam \textbf{main} kita :
+1.	Membuat sebuah \textbf{JFrame}, yang merupakan sebuah window yang dapat berisi \textbf{Canvas}, tombol, menu, dan window lainnya.
+2.	Membuat sebuah \textbf{MyCanvas}, mengatur lebar dan tinggi, dan menambahkannya ke frame, dan
+3.	Menampilkan frame di layar.
+
+\textbf{paint} adalah sebuah method khusus yang akan dipanggil saat \textbf{MyCanvas} perlu digambar. Jika anda menjalankan code tersebut, anda akan melihat sebuah lingkaran hitam pada background abu-abu.
+
+\section{A.2 Method Graphics}
+Untuk menggambar pada \textbf{Canvas}, anda harus memanggil method pada objek \textbf{Graphics}. Sebelumnya kita menggunakan \textbf{fillOval}. Method lainnya termasuk \textbf{drawLine}, \textbf{drawRect}, dsb. Anda dapat membaca dokumentasi dari method ini melalui link : 
+$http://download.oracle.com/javase/6/docs/api/java/awt/Graphics.html.$
+
+Berikut adalah prototipe untuk \textbf{fillOval} :
+\begin{list}
+public void fillOval(int x, int y, int width, int height)
+\end{list}
+parameter menentukan sebuah bounding box, yang merupakan persegi panjang dimana tergambar sebuah oval (seperti yang ditunjukan pada gambar). Bounding box itu sendiri tidak digambar.
+\begin{figure}[H]
+	\centering \includegraphics{images/0.jpg}
+	\caption{Bounding Box}
+	\label{fig:binaryTreeRekursif}
+\end{figure}
+X dan Y menentukan lokasi sudut kiri atas kotak di bounding box pada sistem koordinat Graphics.
+
+\section{A.3 Koordinat}
+Anda mungkin akrab dengan koodinat Kartesius dalam dua dimensi, dimana setiap lokasi diidentifikasi oleh koordinat x (jarak sepanjang xaxis) dan koordinat y. Dengan konvensi, koordinat Kartesius naik dari kanan dan atas, seperti yang ditunjukan pada gambar.
+\begin{figure}[H]
+	\centering \includegraphics{images/1.jpg}
+	\caption{Coordinates}
+	\label{fig:binaryTreeRekursif}
+\end{figure}
+
+Dengan konvensi, sistem grafis komputer menggunakan sistem koordinat dimana koordinat asal ada di sudut kiri atas, dan arah positif sumbu y turun. Java mengikuti konvensi ini.
+
+Koordinat diukur dalam pixsel, setiap pixel sesuai dengan titik di layar. Sebuah layar umumnya sekitar 1000 piksel lebarnya. Jika anda ingin menggunakan nilai floating-point (titik pecahan) sebagai sebuah koordinat, anda harus membulatkan terlebih dahulu. (liat Section 3.2).
+
+\section{A.4 Color}
+Untuk memilih warna dari sebuah bentuk,  tentukan \textbf{setColor} pada objek Graphics:
+
+\begin{list}
+	g.setColor(Color.red);
+\end{list}
+
+\textbf{setColor} merubah warna saat ini. Segala sesuatu yang dapat digambar merupakan warna saat ini.
+
+\textbf{Color.red} adalah nilai yang diberikan oleh Class Color; untuk menggunakannya anda harus meng-import java.awt.Color. Warna lainnya meliputi :
+\begin{figure}[H]
+	\centering \includegraphics{images/2.jpg}
+	\caption{Warna}
+	\label{fig:binaryTreeRekursif}
+\end{figure}
+Anda dapat membuat warna lainnya ditentukan dengan komponen red, green, blue (RGB). Lihat melalui : $http://download.oracle.com/javase/6/docs/api/java/awt/Color.html.$
+
+Anda dapat mengontrol warna background di Canvas dengan menerapkan \textbf{Canvas.setBackground.}
+
+\section{A.5 Mickey Mouse}
+Katakan kita akan menggambar Mickey Mouse. Kita dapat menggunakan bentuk oval untuk membuatnya sebagai wajah, dan tambahkan telinga. Untuk membuat code dapat dibaca, mari membuat \textbf{Rectangles} untuk mewakili bounding box.
+
+Berikut adalah method untuk mengambil \textbf{Rectangle} dan menentukan \textbf{fillOval}.
+
+\begin{list}
+	public void boxOval(Graphics g, Regtangle bb) {
+		g. fillOval(bb.x, bb.y, bb.width, bb.height);
+	}
+\end{list}
+
+Dan berikut adalah method untuk menggambar Mickey :
+\begin{list}
+	public void mickey(Graphics g, Regtangle bb) {
+		boxOval(g, bb);
+		
+		int dx = bb.width/2;
+		int dy = bb.height/2;
+		Rectangle half = new Rectangle(bb.x, bb.y, dx, dy);
+		
+		half.translate(-dx/2, -dy/2);
+		boxOval(g, half);
+		
+		half.translate(dx*2, 0);
+		boxOval(g, half);
+	}
+\end{list}
+
+Pada baris pertama gambar wajahnya. Pada tiga baris selanjutnya buat sebuah persegi panjang kecil untuk telinga. Kita mewujudkan sebuah persegi panjang yang berdiri dan di sebelah kiri untuk telinga pertama kemudian dilanjutkan untuk telinga kedua di sebelah kanan.
+Maka hasilnya akan terlihat seperti ini :
+\begin{figure}[H]
+	\centering \includegraphics{images/3.jpg}
+	\caption{Mickey}
+	\label{fig:binaryTreeRekursif}
+\end{figure}
+
+Anda dapat download kode ini dari $http://thinkapjava.com/code/Mickey.java.$
+
+\section{A.6 Glosarium}
+\begin{description}
+	\item[coordinate] : sebuah variabel atau nilai yang menentukan sebuah lokasi dalam window grafik dua dimensi.
+\end{description}
+\begin{description}
+	\item[pixel] : sebuah unit dimana koordinat sudah diukur.
+\end{description}
+\begin{description}
+	\item[bounding box] : sebuah cara umum untuk menentukan koordinat dari suatu wilayah persegi panjang.
+\end{description}
+
+\section{A.7 Latihan}
+Latihan A.1. Gambar bendera negara Japan, dengan sebuah lingkaran merah di dalam background putih yang lebih besar lebarnya daripada tinggi.
+
+Latihan A.2. Modifikasi Mickey.java untuk mengambar telinga di telinga, dan telinga diantara telinga mereka. Dan lebih lagi hingha mencapai telinga terkecil dengan hanya 3 pixel lebarnya.
+
+Hasilnya seperti dibawah ini :
+\begin{figure}[H]
+	\centering \includegraphics{images/4.jpg}
+	\caption{Latihan 2}
+	\label{fig:binaryTreeRekursif}
+\end{figure}
+Hint : anda hanya dapat menambah atau memodifikasi beberapa baris kode.
+Anda dapat mendownload solusinya dari $http://thinkapjava.com/code/MickeySoln.java.$
+
+Latihan A.3. 
+1.	Download $http://thinkapjava.com/code/Moire.java.$ dan import ke dalam perangkat anda.
+2.	Baca method paint dan gambar sebuah sketsa apa yang anda bayangkan untuk digambar. Sekarang lakukan. Apakah anda dapat membayangkanya? Dari penjelasan yang sudah dijelaskan, lihat $http://en.wikipedia.org/wiki/Moire_pattern.$
+3.	Modifikasi program sehingga jarak antar lingkaran adalah lebih besar atau lebih kecil. Lihat apa yang terjadi pada gambar.
+4.	Modifikasi program sehingga lingkaran tergambar di tengah layar dan terpusat seperti pada contoh (kiri). Jarak antar lingkaran harus cukup kecil yang membuat interferensi Moire terlihat.
+\begin{figure}[H]
+	\centering \includegraphics{images/5.jpg}
+	\caption{Latihan 3}
+	\label{fig:binaryTreeRekursif}
+\end{figure}
+5.	Tulis sebuah method bernama \textbf{radial} yang membuat suatu radial set baris segmen seperti yang terlihat pada contoh (kanan), tapi mereka harus cukup dekat untuk membuat sebuah pola Moire.
+6.	Hampir semua jenis pola grafis mampu menghasilkan pola interferensi Moire. Cobalah dan lihat apa yang dapat anda buat.
