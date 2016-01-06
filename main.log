@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.15)  5 JAN 2016 16:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.15)  6 JAN 2016 13:58
 entering extended mode
 **main.tex
 (main.tex
@@ -830,23 +830,459 @@ Overfull \hbox (0.87123pt too wide) in paragraph at lines 190--191
 []\OT1/cmr/m/n/12 (-20) Sebuah ke-sala-han pada se-buah pro-
  []
 
-) [16]
+) [16] (Bab-2.tex) (Bab-11.tex
+Bab 2.
+[17
+
+
+
+
+
+]
+Overfull \hbox (9.04443pt too wide) in paragraph at lines 28--29
+[]\OT1/cmr/m/n/12 (-20) Dengan masalah terse-but. Mari li-hat con-toh pada Clas
+s Time(Waktu). 
+ []
+
+
+Overfull \hbox (8.51784pt too wide) in paragraph at lines 32--33
+\OT1/cmr/m/n/12 (-20) Sebuah mo-ti-vasi un-tuk men-cip-takan je-nis ob-jek adal
+ah un-tuk merangkum
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 77--84
+
+ []
+
+[20]
+Overfull \hbox (2.7799pt too wide) in paragraph at lines 95--124
+[]\OT1/cmr/m/n/12 (-20) Program berikut me-nun-jukkan dua cara un-tuk mem-buat 
+dan mengin-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--124
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 131--135
+
+ []
+
+[22]
+Overfull \hbox (1.65057pt too wide) in paragraph at lines 148--149
+[]\OT1/cmr/m/n/12 (-20) Java menye-di-akan se-buah mekanisme un-tuk menc-etak h
+al-hal seperti
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--156
+
+ []
+
+[23]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 164.
+
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 164.
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--179
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--179
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--179
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 180--190
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--190
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--197
+
+ []
+
+[25]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.204 \newline
+              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--222
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--222
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--241
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [26]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.246 \newline
+              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--261
+
+ []
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 266--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--284
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 287--289
+
+ []
+
+
+Overfull \hbox (17.99976pt too wide) in paragraph at lines 289--289
+[]\OT1/cmr/bx/n/17.28 Perencanaan dan Pengem-ban-gan pada
+ []
+
+[29]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.301 \newline
+              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--308
+
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.311 \newline
+              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--328
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
+ Make it at least 27.05003pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[30]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [31]
+Overfull \hbox (2.95169pt too wide) in paragraph at lines 345--346
+[]\OT1/cmr/m/n/12 (-20) Pertama, per-tim-bangkan be-ber-apa hal yang bukan al-g
+o-ritma. Ketika
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
+
+ []
+
+
+Underfull \vbox (badness 6078) has occurred while \output is active []
+
+ [32]
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 369--370
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
+
+ []
+
+
+Overfull \hbox (6.68378pt too wide) in paragraph at lines 373--374
+[]\OMS/cmsy/m/n/12 \OT1/cmr/bx/n/12 Algoritma \OT1/cmr/m/n/12 (-20) : Se-buah 
+in-struksi un-tuk menye-le-saikan se-buah masalah
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--82
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33]
+[34] [35] [36]
 runsystem(makeindex -s example_style.ist main.idx)...executed (allowed).
 
 
 No file main.ind.
-(main.aux (Bab-1.aux))
+(main.aux (Bab-1.aux) (Bab-2.aux) (Bab-11.aux))
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 117.38377pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 14631 strings out of 493673
- 257305 string characters out of 3141505
+ 14664 strings out of 493673
+ 257756 string characters out of 3141505
  346575 words of memory out of 3000000
- 17729 multiletter control sequences out of 15000+200000
- 16568 words of font info for 105 fonts, out of 3000000 for 9000
+ 17745 multiletter control sequences out of 15000+200000
+ 16666 words of font info for 107 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  46i,12n,77p,10494b,1674s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
@@ -863,9 +1299,9 @@ MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (24 pages, 277767 bytes).
+Output written on main.pdf (44 pages, 319496 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
+ 260 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18438 words of extra memory for PDF output out of 20736 (max. 10000000)
 
