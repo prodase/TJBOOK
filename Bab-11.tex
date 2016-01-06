@@ -1,0 +1,421 @@
+\chapter{Membuat Objek}
+\section{Definisi Class dan Tipe Objek}
+
+Kembali pada Bagian 1.5 ketika kita mendefinisikan kelas Hello, kita juga membuat jenis objek bernama Hello. Kita tidak menciptakan variabel dengan tipe Hello, dan kami tidak membuat objek Hello, tapi kita bisa buat !
+
+Contoh yang tidak masuk akal, ketika tidak ada alasan untuk membuat objek Hello, dan itu tidak akan berbuat lebih jika kita lakukan. Dalam bab ini, kita akan melihat definisi Class yang menciptakan jenis objek yang berguna.
+
+Berikut adalah hal yang paling penting dalam bab ini:
+
+\textbullet  Mendefinisikan Class baru juga menciptakan jenis objek baru dengan nama yang sama.
+
+\textbullet  Sebuah definisi Class seperti template untuk objek, menentukan apa variabel misalnya memiliki objek dan metode apa yang dapat beroperasi pada method.
+
+\textbullet  Setiap objek memiliki beberapa jenis objek.
+
+\textbullet  Ketika kamu membuat sebuah objek baru, Java memanggil method khusus yang disebut constructor untuk menginisialisasi variabel instance. Kamu dapat memberikan satu atau lebih konstruktor sebagai bagian dari definisi kelas.
+
+\textbullet  Method yang dapat beroperasi pada tipe yang dapat didefinisikan dalam class tersebut.
+
+Berikut adalah beberapa masalah tentang syntax pada definisi class:
+
+\textbullet Nama Class, harus diawali dengan huruf kapital, yang membantu membedakan apakah itu tipe primitif dan nama variabel.
+
+\textbullet Kamu biasanya menempatkan satu definisi kelas di setiap file, dan nama file harus sama dengan nama kelas, dengan .java akhir nama file. Sebagai contoh, Class Time didefinisikan dalam file bernama Time.java.
+
+\textbullet Dalam program apapun, satu kelas yang ditunjuk sebagai class awal. Class awal harus berisi sebuah method main (Method Utama), yang mana program tersebut akan dieksekusi. Kelas-kelas lain mungkin memiliki method main, tapi itu tidak akan dieksekusi.
+
+Dengan masalah tersebut. Mari lihat contoh pada Class Time(Waktu).
+
+\section{Waktu}
+
+Sebuah motivasi untuk menciptakan jenis objek adalah untuk merangkum data dalam suatu objek yang dapat dilakukan sebagai satu kesatuan. Kita telah melihat dua jenis seperti ini, titik dan kotak.
+
+Contoh lain, yang kita akan menerapkan diri kita sendiri, adalah waktu, yang merepresentasikan waktu dalam hari. Data disimpan dalam sebuah objek Waktu adalah satu jam, satu menit, dan sejumlah detik. Karena setiap objek Waktu mengandung data jam, menit, dan detik, maka kita perlu variabel.
+
+Langkah pertama adalah untuk menentukan jenis setiap variabel. Jelas bahwa jam dan menit harus bilangan bulat (int). Untuk lebih menarik, maka kita buat detik menggunakan double.
+
+Contoh variabel dideklarasikan di awal definisi class, seperti berikut
+\newline
+class Waktu \textbraceleft \newline
+	int jam, menit; \newline
+	double detik; \newline
+\textbraceright
+
+Dengan sendirinya, kode diatas merupakan definisi class. Setelah mendeklarasikan variabel, langkah selanjutnya yaitu menentukan konstruktor untuk class baru.
+
+
+\section{Konstruktor}
+
+Konstruktor adalah inisialisasi dari variabel. Sintaks untuk konstruktor mirip seperti method lain,tapi dengan tiga pengecualian: \newline
+
+\textbullet Nama konstruktor sama dengan nama class. \newline
+
+\textbullet Konstruktor tidak memiliki nilai kembali (return type). \newline
+
+\textbullet Keyword statis dihilangkan. \newline
+
+Kita berikan contoh untuk class Waktu: \newline
+
+public Waktu()\textbraceleft \newline
+	this.jam = 0; \newline
+	this.menit = 0; \newline
+	this.detik = 0.0; \newline
+\textbraceright	
+
+
+Mana yang kamu harapkan untuk melihat return type, antara public dan Waktu, tidak ada bukan ?. Itulah cara kita (dan compiler) dapat memberitahu bahwa ini adalah sebuah konstruktor.
+
+Konstruktor tidak akan mengambil argumen. Setiap baris dari konstruktor menginisialisasi sebuah variabel untuk nilai default. Nama ini adalah kata kunci khusus yang mengacu pada objek yang kita ciptakan. Kamu dapat menggunakan ini dengan cara yang sama kamu gunakan untuk nama benda lainnya. Sebagai contoh, Kamu dapat membaca dan menulis variabel contoh ini, dan Kamu dapat melewati ini sebagai argumen untuk method lain.
+
+Tapi kamu tidak menyatakan ini dan kamu tidak dapat membuat sebuah tugas untuk itu. ini dibuat oleh sistem, yang harus kamu lakukan adalah menginisialisasi variabel nya.
+
+\section{Konstruktor (Lanjutan)}
+
+Konstruktor dapat overload, seperti method lain, yang berarti bahwa kamu dapat memberikan beberapa konstruktor dengan parameter yang berbeda. Java tahu yang konstruktor dengan cara mencocokkan argumen baru dengan parameter konstruktor.
+
+Umum untuk memiliki satu konstruktor yang tidak memiliki argumen, dan satu konstruktor yang mengambil daftar parameter identik dengan daftar variabel misalnya. Sebagai contoh:
+\newline
+public Waktu (int jam, int menit, double detik)\textbraceleft \newline
+	this.jam = jam; \newline
+	this.menit = menit; \newline
+	this.detik = detik; \newline
+\textbraceright \newline
+
+Nama dan jenis parameter akan sama dengan nama dan jenis variabel. Semua konstruktor tidak menyalin informasi dari parameter untuk variabel.
+
+Jika kamu melihat dokumentasi untuk point dan kotak, kamu akan melihat bahwa kedua kelas menyediakan konstruktor seperti ini. Overloading konstruktor menyediakan fleksibilitas untuk membuat objek pertama dan kemudian mengisi kekosongan, atau untuk mengumpulkan semua informasi sebelum membuat objek.
+
+Ini mungkin tidak tampak menarik. Menulis konstruktor adalah membosankan, prosesnya selalu mekanis. Setelah kamu telah menulis dua variabel, Kamu akan menemukan bahwa kamu dapat menulis dengan cepat hanya dengan melihat daftar variabel misalnya.
+
+\section{Membuat Objek Baru}
+
+Meskipun konstruktor terlihat seperti method, Kamu tidak pernah memanggil mereka secara langsung. Sebaliknya, ketika kamu memanggil konstruktor baru, dimulai dari sistem mengalokasikan ruang untuk objek baru baru kemudian kamu akan memanggil konstruktor.
+
+Program berikut menunjukkan dua cara untuk membuat dan menginisialisasi objek Waktu:
+\newline
+class Waktu \textbraceleft \newline
+	int jam, menit; \newline
+	double detik; \newline
+\newline	
+	public Waktu()\textbraceleft \newline
+		this.jam = 0; \newline
+		this.menit = 0; \newline
+		this.detik = 0.0; \newline
+	\textbraceright \newline
+\newline
+	public Waktu(int jam, int menit, double detik)\textbraceleft \newline
+	this.jam = jam; \newline
+	this.menit = menit; \newline
+	this.detik = detik; \newline
+	\textbraceright \newline
+\newline
+	public static void main(String[] args)\textbraceleft \newline
+	Waktu w1 = new Waktu(); \newline
+	w1.jam = 11; \newline
+	w1.menit = 8; \newline
+	w1.detik = 3.14159; \newline
+	System.out.println(w1); \newline
+\newline
+	Waktu w2 = new Waktu(11, 8, 3.14159); \newline
+	System.out.println(w2); \newline
+	\textbraceright \newline
+\textbraceright
+
+Dalam method main, pertama kali kita memanggil objek baru, kita tidak memberikan sebuah argumen, sehingga Java memanggil konstruktor pertama. Beberapa baris berikutnya baru memberikan nilai pada variabel.
+
+Pada saat yang kedua kita panggil objek baru, kita memberikan argumen yang sesuai dengan parameter konstruktor kedua. Ini cara menginisialisasi variabel misalnya lebih ringkas dan sedikit lebih efisien, tetapi bisa sulit untuk dibaca, karena tidak jelas mana nilai yang ditugaskan untuk variabel misalnya.
+
+\section{Mencetak Objek}
+
+Hasil output pada program sebelumnya yaitu :
+\newline
+Waktu@80cc7c0 \newline
+Waktu@80cc807 \newline
+
+Ketika Java mencetak nilai dari user-defined, mencetak nama jenis dan heksadesimal khusus (basis 16) kode yang unik untuk setiap objek. Kode ini tidak berarti dalam dirinya sendiri; pada kenyataannya, itu dapat bervariasi dari mesin ke mesin dan bahkan dari compiler untuk menjalankan. Tetapi dapat berguna untuk debugging, jika kamu ingin melacak objek individu.
+
+Untuk mencetak objek dalam cara yang lebih berarti untuk pengguna, Kamu dapat menulis sebuah metode yang disebut sesuatu seperti cetakWaktu:
+\newline
+public static void cetakWaktu(Waktu w)\textbraceleft \newline
+	System.out.println(w.jam + ":" + w.menit + ":" + w.detik); \newline
+\textbraceright
+
+Output dari method ini, jika kita beranggapan baik w1 atau w2 sebagai argumen, outputnya adalah 11: 8: 3.14159. Meskipun ini dikenali sebagai waktu, tidak cukup dalam format standar. Sebagai contoh, jika jumlah menit atau detik kurang dari 10, kita mungkin ingin menghapus bagian desimal dari detik. Dengan kata lain, kita ingin sesuatu seperti 11:08:03.
+
+Dalam kebanyakan bahasa, ada cara sederhana untuk mengontrol output format untuk nomor. Di Javaa tidak ada cara sederhana.
+
+Java menyediakan sebuah mekanisme untuk mencetak hal-hal seperti format waktu dan tanggal, dan juga untuk menafsirkan masukan apa yang di format. Kamu dapat melihat dokumentasi untuk class Tanggal dalam paket java.util.
+
+\section{Operasi pada Objek}
+
+Dalam bagian berikutnya, terdapat 3 macam metode yang beroperasi pada objek : \newline
+\textbullet \textbf{Pure Function} : Mengambil objek sebagai argumen tetapi tidak dapat memodifikasi. Nilai return yaitu baik objek primitif atau objek baru dibuat di dalam metode. \newline
+\textbullet \textbf{Modifier} : Mengambil objek sebagai argumen dan dapat dimodifikasi beberapa atau semua yang terdapat pada modifier tersebut. bahkan nilai return void. \newline
+\textbullet \textbf{Fill-in Method} : Salah satu objek yang kosong, Objek akan diisi oleh method itu sendiri. Secara teknis, fill-in method  adalah tipe modifier. \newline
+
+\section{Pure Functions}
+
+Sebuah method dianggap sebagai fungsi murni jika hasilnya bergantung hanya pada argumen, dan tidak memiliki efek lainnya seperti memodifikasi sebuah argumen atau mencetak sesuatu. Satu-satunya hasil fungsi murni adalah nilai kembali.
+
+Salah satu contoh adalah isAfter, yang membandingkan dua Waktu dan mengembalikan tipe boolean yang menunjukkan apakah operan pertama datang setelah kedua:
+\newline
+public static boolean isAfter(Waktu w1, Waktu w2)\textbraceleft \newline
+	if (w1.jam \textgreater w2.jam) \newline
+		return ture; \newline
+	if (w1.jam \textless w2.jam) \newline
+		return false; \newline
+\newline
+	if (w1.menit \textgreater w2.menit) \newline
+		return true; \newline
+	if (w1.menit \textless w2.menit) \newline
+		return false; \newline
+\newline
+	if (w1.detik \textgreater w2.detik) \newline
+		return false; \newline
+\textbraceright \newline
+\newline
+Contoh kedua adalah tambahWaktu, yang menghitung jumlah dua kali. Sebagai contoh, jika 09:14:30, dan membuat roti membutuhkan 3 jam dan 35 menit, Kamu bisa menggunakan tambahWaktu untuk mencari tahu ketika roti akan dilakukan.
+
+Berikut ini adalah draft kasar dari method ini yang tidak benar:
+\newline \newline
+public static Waktu tambahWaktu(Waktu w1, Waktu w2)\textbraceleft \newline
+	Waktu tambah = new Waktu(); \newline
+	tambah.jam = w1.jam + w2.jam; \newline
+	tambah.menit = w1.menit + w2.menit; \newline
+	tambah.detik = w1.detik + w2.detik \newline
+	return tambah; \newline
+\textbraceright \newline \newline
+Meskipun method ini mengembalikan sebuah objek Waktu, itu bukan sebuah konstruktor. Kamu harus kembali dan membandingkan sintaks dari method seperti ini dengan sintaks konstruktor, karena mudah untuk mendapatkannya.
+
+Berikut adalah contoh bagaimana menggunakan method ini. Jika currentTime berisi waktu saat ini dan breadTime mengandung jumlah waktu yang diperlukan untuk membuat roti, maka kamu bisa menggunakan tambahWaktu untuk mencari tahu ketika roti akan dilakukan.
+\newline
+Waktu currentTime = new Waktu(9, 14, 30.0); \newline
+Waktu breadTime = new Waktu(3, 35, 0.0); \newline
+Waktu doneTime = tambahWaktu(currentTime, breadTime); \newline
+cetakWaktu(doneTime); \newline
+
+Output dari program ini adalah 12: 49: 30.0, yang benar. Di sisi lain, ada kasus di mana hasilnya tidak benar. Dapatkah Anda memikirkan yang tidak benar ?
+
+Masalahnya adalah bahwa method ini tidak menangani kasus-kasus di mana jumlah detik atau menit menambahkan hingga lebih dari 60. Dalam hal ini, kita harus "membawa" detik-detik ekstra ke dalam kolom menit, atau menit ekstra ke dalam kolom jam .
+
+Berikut adalah versi method yang sudah dikoreksi.
+
+\newline
+public static Waktu tambahWaktu(Waktu w1, Waktu w2)\textbraceleft \newline
+	Waktu tambah = new Waktu(); \newline
+	tambah.jam = w1.jam + w2.jam; \newline
+	tambah.menit = w1.menit + w2.menit; \newline
+	tambah.detik = w1.detik + w2.detik; \newline
+\newline
+	if(tambah.detik \textgreater = 60.0)\textbraceleft \newline
+		tambah.detik -= 60; \newline
+		tambah.menit += 1; \newline
+	\textbraceright \newline
+\newline
+	if (tambah.menit \textgreater = 60)\textbraceleft \newline
+		tambah.menit -= 60; \newline
+		tambah.jam += 1; \newline
+	\textbraceright \newline
+\textbraceright \newline
+Meskipun benar, ada cara alternatif yang jauh lebih pendek.
+
+Kode ini menunjukkan dua operator, kita belum pernah melihat sebelumnya, + = dan - =. Operator ini menyediakan cara ringkas untuk kenaikan dan penurunan variabel. Mereka mirip dengan ++ dan --, \newline kecuali \newline (1) variabel yang bekerja yaitu int, dan \newline (2) jumlah selisih tidak harus 1. Pernyataan sum.second - = 60,0; setara dengan sum.second = sum.second - 60; \newline
+\section{Modifiers}
+
+Sebagai contoh pada modifier, increment, yang menambahkan jumlah detiks ke objek Waktu. Sekali lagi, konsep dari method ini terlihat seperti berikut :
+\newline
+public static void increment(Waktu waktu, double detiks)\textbraceleft \newline
+	waktu.detik += detik2; \newline
+\newline
+	if(waktu.detik \textgreater = 60.0)\textbraceleft \newline
+		waktu.detik -= 60.0; \newline
+		waktu.menit += 1; \newline
+	\textbraceright \newline
+\newline
+	if(waktu.menit \textgreater = 60)\textbraceleft \newline
+		waktu.menit -= 60; \newline
+		waktu.jam += 1; \newline
+	\textbraceright \newline
+\textbraceright \newline
+
+Baris pertama melakukan operasi dasar; sisanya berkaitan dengan kasus yang sama yang kita lihat sebelumnya.
+
+Apakah method ini sudah benar? Apa yang terjadi jika argumen detiks jauh lebih besar dari 60? Dalam hal ini, tidak cukup untuk mengurangi 60 sekali; kita harus terus melakukannya sampai detiks di bawah 60. Kita dapat melakukan itu dengan mengganti pernyataan dengan pernyataan sementara:
+
+\newline
+
+public static void increment(Waktu waktu, double detiks)\textbraceleft \newline
+	waktu.detik += detiks; \newline
+\newline
+	while(waktu.detik \textgreater = 60.0)\textbraceleft \newline
+		waktu.detik -= 60.0; \newline
+		waktu.menit += 1; \newline
+	\textbraceright \newline
+\newline
+	while(waktu.menit \textgreater = 60)\textbraceleft \newline
+		waktu.menit -= 60; \newline
+		waktu.jam += 1; \newline
+	\textbraceright \newline
+\textbraceright \newline
+
+Solusi ini benar, tetapi tidak sangat efisien. Dapatkah kamu memikirkan solusi yang tidak memerlukan iterasi?
+
+\section{Fill-in Methods}
+
+Untuk menciptakan objek baru setiap kali tambahIsiWaktu dipanggil, kita bisa meminta untuk memberikan sebuah objek di mana tambahIsiWaktu menyimpan hasilnya. Bandingkan dengan versi sebelumnya:
+\newline
+public static void tambahIsiWaktu(Waktu w1, Waktu w2, Waktu tambah)\textbraceleft \newline
+	tambah.jam = w1.jam + w2.jam; \newline
+	tambah.menit = w1.menit + w2.menit; \newline
+	tambah.detik = w1.detik + w2.detik; \newline
+\newline
+	if(tambah.detik \textgreater = 60.0)\textbraceleft \newline
+		tambah.detik -= 60.0; \newline
+		tambah.menit += 1; \newline
+	\textbraceright \newline
+\newline
+	if(tambah.menit \textless = 60)\textbraceleft \newline
+		tambah.menit -= 60; \newline
+		tambah.jam += 1; \newline
+	\textbraceright \newline
+\textbraceright \newline
+Hasilnya disimpan dalam variabel tambah, sehingga void merupakan return typenya.
+
+Modifiers dan fill-in method merupakan yang efisien karena mereka tidak perlu membuat objek baru. Tapi mereka lebih sulit untuk mengisolasi bagian dari program; dalam skala proyek besar mereka dapat menyebabkan kesalahan yang sulit untuk menemukan / mencari data.
+
+Pure functions dapat membantu mengelola kompleksitas proyek-proyek besar, sebagian dengan membuat beberapa jenis kesalahan, dan karena hasil dari pure functions hanya bergantung pada parameter, mungkin ada cara lain untuk mempercepat mereka dengan menyimpan hasil sebelumnya dihitung.
+\newline
+\section{Perencanaan dan Pengembangan pada Incremental}
+
+Dalam bab ini akan ditunjukkan proses pengembangan program yang disebut prototyping. Untuk setiap method, kalian akan menulis draft kasar yang dilakukan dalam perhitungan dasar, kemudian diuji pada beberapa kasus, kemudian mengoreksi apa yang kurang.
+
+Pendekatan ini bisa efektif, tetapi dapat menyebabkan kode yang tidak terlalu rumit, karena berhubungan dengan banyak kasus khusus dan tidak dapat diandalkan karena sulit untuk meyakinkan diri sendiri bahwa kamu telah menemukan sebuah kesalahan.
+
+Sebuah alternatif untuk mencari wawasan ke dalam suatu masalah yang dapat membuat pemrograman jauh lebih mudah. Dalam hal ini wawasan adalah bahwa waktu adalah benar-benar angka tiga digit dalam basis 60! Yang kedua adalah menit "60 kolom", dan jam adalah "3600 kolom ."
+
+Ketika kita menulis tambahWaktu dan increment, secara efektif dapat melakukan penambahan pada basis 60, itulah sebabnya mengapa kita harus " membawa dari satu kolom ke yang berikutnya.
+
+Pendekatan lain untuk seluruh masalah adalah untuk mengkonversi Waktu menjadi double dan mengambil keuntungan dari fakta bahwa komputer sudah tahu bagaimana melakukan aritmatika dengan double. Berikut adalah metode yang mengubah waktu menjadi double:
+
+\newline
+
+public static double converttoSeconds(Waktu w)\textbraceleft \newline
+	int menit = w.jam * 60 + t.menit; \newline
+	double detik = menit * 60 + w.detik; \newline
+	return detik; \newline
+\textbraceright \newline
+
+Sekarang semua yang kita butuhkan adalah cara untuk mengkonversi dari double untuk objek Waktu. Kita bisa menulis sebuah metode untuk melakukannya, tapi mungkin lebih masuk akal untuk menulis sebagai konstruktor:
+
+\newline
+public Waktu(double detik)\textbraceleft \newline
+	this.jam = (int)(detik / 3600.0); \newline
+	detik -= this.jam * 3600.0; \newline
+	this.menit = (int)(detik / 60.0); \newline
+	detik -= this.menit * 60; \newline
+	this.detiks = detik; \newline
+\textbraceright \newline
+
+Konstruktor ini sedikit berbeda dari yang lain; melibatkan beberapa kalkulasi bersama untuk variabel.
+
+Kamu mungkin harus berpikir untuk meyakinkan diri sendiri bahwa teknik yang digunakan untuk mengkonversi dari satu basis ke yang lain harus benar. Tapi setelah kamu yakin, kita dapat menggunakan metode ini untuk menulis ulang tambahWaktu:
+\newline
+public static Waktu tambahWaktu(Waktu w1, Waktu w2)\textbraceleft \newline
+	double detik = converttoSeconds(w1) + converttoSeconds(w2); \newline
+	return new Waktu(detik); \newline
+\textbraceright \newline
+
+Ini lebih pendek dari versi yang asli, dan jauh lebih mudah untuk menunjukkan bahwa itu adalah benar (dengan asumsi, seperti biasa, bahwa method yang dipanggil itu benar). Sebagai latihan, tulis ulang increment dengan cara yang sama.
+
+\section{Peraturan Umum}
+
+Dalam beberapa hal mengkonversi dari basis 60 ke basis 10 adalah hal yang lebih sulit daripada hanya berurusan dengan waktu. Konversi basis lebih abstrak; intuisi kita untuk menangani waktu harus lebih baik.
+
+Tetapi jika kita memiliki wawasan untuk mengakali sebagai basis 60 angka, dan membuat investasi menulis metode konversi (convertToSeconds dan konstruktor pihak ketiga), kita mendapatkan sebuah program yang lebih pendek, lebih mudah dibaca dan dapat debug, dan lebih handal.
+
+Hal ini juga lebih mudah untuk menambahkan fitur. Bayangkan jika kita kurangi dua kali untuk mencari durasi antara dua kali tersebut. Menggunakan metode konversi akan jauh lebih mudah.
+
+Terkadang jika masalah lebih sulit membuat lebih mudah (kasus khusus yang lebih sedikit, lebih sedikit kesempatan untuk salah).
+
+\section{Algoritma}
+
+Ketika kamu menulis sebuah solusi umum untuk masalah dalam sebuah class, maka akan muncul solusi yang spesifik yang mengacu pada satu masalah, kamu akan menuliskannya pada sebuah algoritma. 
+
+Pertama, pertimbangkan beberapa hal yang bukan algoritma. Ketika Kamu belajar untuk memperbanyak nomor satu digit, Kamu mungkin menghafal tabel perkalian. Akibatnya, Kamu hafal 100 solusi spesifik, sehingga pengetahuanmu bukan secara algoritmik.
+
+Tetapi jika kamu malas, kamu mungkin belajar beberapa trik. Misalnya, untuk produk dari n dan 9, Kamu dapat menulis n - 1 sebagai digit pertama dan 10 - n sebagai digit kedua. Trik ini adalah solusi umum untuk mengalikan nomor satu digit dengan 9. Itu adalah suatu algoritma!
+
+Demikian pula, teknik yang kamu pelajari untuk penambahan dengan membawa, pengurangan dengan meminjam. Salah satu karakteristiknya algoritma adalah bahwa algoritma tidak memerlukan kecerdasan apapun untuk melaksanakannya. Algoritma adalah  Sebuah instruksi untuk menyelesaikan sebuah masalah dalam class oleh proses mekanik.
+
+Menurut pendapat saya, memalukan bahwa siswa menghabiskan begitu banyak waktu di sekolah belajar untuk mengeksekusi algoritma. Di sisi lain, proses merancang algoritma yang menarik, intelektual yang menantang, dan bagian sentral dari apa yang kita sebut pemrograman.
+
+Beberapa hal yang dilakukan orang secara alami, tanpa kesulitan adalah yang paling sulit untuk mengekspresikan algoritma. Memahami bahasa alami adalah contoh yang baik. Kita semua melakukannya, tapi sejauh ini belum ada yang mampu menjelaskan bagaimana kita melakukannya, setidaknya tidak dalam bentuk algoritma.
+
+Segera Kamu akan memiliki kesempatan untuk merancang algoritma sederhana untuk berbagai masalah. 
+
+\section{Istilah - Istilah}
+
+\textbullet \textbf{Class} : Sebelumnya, sudah dijelaskan bahwa class kumpulan dari beberapa method. Dalam Bab ini kita belajar bahwa definisi class yaitu sebagai template (klise) untuk tipe objek yang baru. \newline
+
+\textbullet \textbf{Instance} : Sebuah member dalam class. Setiap objek pada instance merujuk pada beberapa class. \newline
+
+\textbullet \textbf{Konstruktor} : Method spesial yang menginisialisasikan variabel instance pada sebuah objek konstruktor yang baru. \newline
+
+\textbullet \textbf{Class Awal} : Class yang berisi method utama dimana program tersebut akan dieksekusi. \newline
+
+\textbullet \textbf{Pure Function} : Method yang hasilnya bergantung pada parameter dan tidak memiliki efek lain selain pengembalian nilai. \newline
+
+\textbullet \textbf{Modifier} : Method yang dapat mengganti satu atau beberapa objek yang dapat menerima parameter dan kebanyakan mengembalikkan nilai kosong. \newline
+
+\textbullet \textbf{Fill-in Method} : Tipe Method yang mengambil objek kosong sebagai parameter dan diisi sebagai variabel instance sebagai contoh dapat pengembalian nilai. \newline
+
+\textbullet \textbf{Algoritma} : Sebuah instruksi untuk menyelesaikan sebuah masalah dalam class oleh proses mekanik. \newline
+
+
+\section{Latihan}
+
+Latihan 11.1. Dalam permainan papan Scrabble, setiap kotak berisi huruf, yang digunakan untuk mengeja kata-kata, dan nilai, yang digunakan untuk menentukan nilai dari kata-kata.
+\newline
+1. Tulis definisi untuk kelas bernama Ubin yang mewakili ubin pada Scrabble. \newline
+Variabel harus karakter berhuruf dan integer.
+\newline \newline
+2. Tulis konstruktor yang mengambil parameter berhuruf , nilai dan menginisialisasi pada variabel.
+\newline \newline
+3. Tulis method bernama printTile yang mengambil objek Tile sebagai parameter dan mencetak variabel.
+\newline \newline
+4. Tulis method bernama testTile yang menciptakan objek Tile dengan huruf Z dan nilai 10, kemudian mgunakan printTile untuk mencetak hasil dari objek.
+\newline \newline
+Inti dari latihan ini adalah untuk melatih pada bagian mekanismenya untuk menciptakan kelas baru dan kode yang tes tersebut.
+\newline \newline
+Latihan 11.2. Tulis definisi kelas untuk Tanggal, jenis objek yang membandingkan tiga bilangan bulat, tahun, bulan dan hari. Kelas ini harus menyediakan dua konstruktor. Yang pertama harus ada parameter. Kedua harus mengambil parameter bernama tahun, bulan dan hari, dan menggunakannya untuk menginisialisasi variabel.
+\newline \newline
+Tulis method utama yang menciptakan objek Tanggal bernama ulangTahun. Objek baru harus berisi tanggal lahir kamu. Kamu dapat menggunakan salah satu konstruktor.
+\newline \newline
+Latihan 11.3. Bilangan rasional adalah angka yang dapat direpresentasikan sebagai rasio dua bilangan bulat. Misalnya, 2/3 adalah bilangan rasional, dan Kamu dapat memikirkan 7 sebagai bilangan rasional dengan implisit 1 di penyebut. Untuk tugas ini, Kamus akan menulis sebuah definisi kelas untuk bilangan rasional.
+\newline \newline
+1. Buat program baru yang disebut Rational.java yang mendefinisikan kelas bernama Rational. Sebuah objek Rational harus memiliki dua contoh bilangan bulat (integer) untuk menyimpan pembilang dan penyebut.
+\newline \newline
+2. Tulis konstruktor yang tidak mengambil argumen dan yang menentukan dari pembilang ke 0 dan penyebut untuk 1.
+\newline \newline
+3. Tulis method printRational yang mengambil benda Rasional sebagai argumen dan mencetaknya.
+\newline \newline
+4. Tulis method main yang menciptakan objek baru dengan tipe Rasional, dan membuat variabel misalnya untuk beberapa nilai, dan mencetak objek.
+\newline \newline
+5. Pada tahap ini, Kamu sudah memiliki program yang dapat diuji. Ujilah dan jika perlu, debug itu.
+\newline \newline
+6. Tulis konstruktor yang kedua untuk kelas kamu yang membutuhkan dua argumen dan gunakan untuk menginisialisasi variabel.
+\newline \newline
+7. Tulis method yang disebut negate yang mengembalikkan bilangan rasional. Method ini harus modifier. Tambahkan baris main untuk menguji method baru. 
+\newline \newline
+8. Tulis method yang disebut invert yang mengembalikkan nomor dengan swapping pembilang dan penyebut. Tambahkan baris main untuk menguji method baru.
+\newline \newline
+9. Tulis method yang disebut toDouble yang mengubah bilangan rasional menjadi bilangan decimal (double) dan mengembalikan hasilnya. Method ini adalah pure functions, tidak dapat memodifikasi objek. Seperti biasa, uji method tersebut.
+\newline \newline
+10. Tulis modifier bernama reduce yang mengurangi jumlah bilangan rasional untuk persyaratan terendah dengan mencari pembagi terbesar dari pembilang dan penyebut. Method ini harus menjadi pure functions; tidak harus memodifikasi variabel  dari objek di mana ia dipanggil.
+\newline \newline
+11. Tulis method yang disebut add yang mengambil dua angka Rational sebagai argumen dan mengembalikan sebuah objek Rational baru. return objek harus berisi jumlah dari argumen tersebut.
+\newline \newline
+Ada beberapa cara untuk menambahkan fraksi. Kamu dapat menggunakan salah satu yang kamu inginkan, tetapi kamu harus memastikan bahwa hasil dari operasi berkurang sehingga pembilang dan penyebut tidak memiliki pembagi umum (selain 1).
+\newline \newline
+Tujuan dari latihan ini adalah untuk menulis sebuah definisi kelas yang meliputi berbagai method, termasuk konstruktor, modifiers dan pure functions.
