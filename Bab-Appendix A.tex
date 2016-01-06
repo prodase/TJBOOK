@@ -2,7 +2,7 @@
 \section{A.1 Grafis Java 2D}
 Lampiran ini memberikan contoh dan latihan yang menunjukan grafik Java. Ada beberapa cara untuk membuat grafik di Java. Sederhananya adalah dengan menggunakan \textbf{java.awt.Graphics}. Berikut ini adalah contoh lengkapnya :
 
-\begin{list}
+\begin{lstlisting}
 	import  java.awt.Canvas;
 	import  java.awt.Graphics;
 	import  javax.swing.JFrame;
@@ -28,7 +28,7 @@ Lampiran ini memberikan contoh dan latihan yang menunjukan grafik Java. Ada bebe
 	g.fillOval(100, 100, 200, 200);
 	}
 }
-\end{list}
+\end{lstlisting}
 
 \textbf{Note:}anda dapat mendownload code diatas melalui link ini : $http://thinkapjava.com/code/MyCanvas.java.$
 
@@ -48,9 +48,9 @@ Untuk menggambar pada \textbf{Canvas}, anda harus memanggil method pada objek \t
 $http://download.oracle.com/javase/6/docs/api/java/awt/Graphics.html.$
 
 Berikut adalah prototipe untuk \textbf{fillOval} :
-\begin{list}
+\begin{lstlisting}
 public void fillOval(int x, int y, int width, int height)
-\end{list}
+\end{lstlisting}
 parameter menentukan sebuah bounding box, yang merupakan persegi panjang dimana tergambar sebuah oval (seperti yang ditunjukan pada gambar). Bounding box itu sendiri tidak digambar.
 \begin{figure}[H]
 	\centering \includegraphics{images/0.jpg}
@@ -74,9 +74,9 @@ Koordinat diukur dalam pixsel, setiap pixel sesuai dengan titik di layar. Sebuah
 \section{A.4 Color}
 Untuk memilih warna dari sebuah bentuk,  tentukan \textbf{setColor} pada objek Graphics:
 
-\begin{list}
+\begin{lstlisting}
 	g.setColor(Color.red);
-\end{list}
+\end{lstlisting}
 
 \textbf{setColor} merubah warna saat ini. Segala sesuatu yang dapat digambar merupakan warna saat ini.
 
@@ -95,14 +95,14 @@ Katakan kita akan menggambar Mickey Mouse. Kita dapat menggunakan bentuk oval un
 
 Berikut adalah method untuk mengambil \textbf{Rectangle} dan menentukan \textbf{fillOval}.
 
-\begin{list}
+\begin{lstlisting}
 	public void boxOval(Graphics g, Regtangle bb) {
 		g. fillOval(bb.x, bb.y, bb.width, bb.height);
 	}
-\end{list}
+\end{lstlisting}
 
 Dan berikut adalah method untuk menggambar Mickey :
-\begin{list}
+\begin{lstlisting}
 	public void mickey(Graphics g, Regtangle bb) {
 		boxOval(g, bb);
 		
@@ -116,7 +116,7 @@ Dan berikut adalah method untuk menggambar Mickey :
 		half.translate(dx*2, 0);
 		boxOval(g, half);
 	}
-\end{list}
+\end{lstlisting}
 
 Pada baris pertama gambar wajahnya. Pada tiga baris selanjutnya buat sebuah persegi panjang kecil untuk telinga. Kita mewujudkan sebuah persegi panjang yang berdiri dan di sebelah kiri untuk telinga pertama kemudian dilanjutkan untuk telinga kedua di sebelah kanan.
 Maka hasilnya akan terlihat seperti ini :
