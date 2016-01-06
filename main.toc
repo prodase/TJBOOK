@@ -1,0 +1,30 @@
+\contentsline {chapter}{Daftar Tabel}{i}
+\contentsline {chapter}{Daftar Gambar}{iii}
+\contentsline {chapter}{\numberline {1}Cara Program}{1}
+\contentsline {section}{\numberline {1.1}Apa itu bahasa pemrograman?}{2}
+\contentsline {section}{\numberline {1.2}Apa itu program?}{4}
+\contentsline {section}{\numberline {1.3}Apa itu \textit {debugging}?}{6}
+\contentsline {subsection}{\numberline {1.3.1}Kesalahan Sintak \textit {(Syntax Error)}}{6}
+\contentsline {subsection}{\numberline {1.3.2}Kesalahan ketika menjalankan \textit {(Run-Time Error)}}{7}
+\contentsline {subsection}{\numberline {1.3.3}Kesalahan logika dan semantik \textit {(Logic errors and sematics)}}{8}
+\contentsline {subsection}{\numberline {1.3.4}Debugging}{8}
+\contentsline {section}{\numberline {1.4}Bahasa Formal dan Bahasa Alami}{10}
+\contentsline {section}{\numberline {1.5}Program Pertama}{12}
+\contentsline {section}{\numberline {1.6}Glosarium}{14}
+\contentsline {section}{\numberline {1.7}Latihan}{16}
+\contentsline {chapter}{\numberline {2}Membuat Objek}{17}
+\contentsline {section}{\numberline {2.1}Definisi Class dan Tipe Objek}{17}
+\contentsline {section}{\numberline {2.2}Waktu}{18}
+\contentsline {section}{\numberline {2.3}Konstruktor}{19}
+\contentsline {section}{\numberline {2.4}Konstruktor (Lanjutan)}{20}
+\contentsline {section}{\numberline {2.5}Membuat Objek Baru}{21}
+\contentsline {section}{\numberline {2.6}Mencetak Objek}{22}
+\contentsline {section}{\numberline {2.7}Operasi pada Objek}{23}
+\contentsline {section}{\numberline {2.8}Pure Functions}{24}
+\contentsline {section}{\numberline {2.9}Modifiers}{27}
+\contentsline {section}{\numberline {2.10}Fill-in Methods}{28}
+\contentsline {section}{\numberline {2.11}Perencanaan dan Pengembangan pada Incremental}{29}
+\contentsline {section}{\numberline {2.12}Peraturan Umum}{31}
+\contentsline {section}{\numberline {2.13}Algoritma}{32}
+\contentsline {section}{\numberline {2.14}Istilah - Istilah}{33}
+\contentsline {section}{\numberline {2.15}Latihan}{34}
