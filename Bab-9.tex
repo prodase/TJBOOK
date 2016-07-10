@@ -1,0 +1,368 @@
+\chapter{Objek Yang Dapat Berubah}
+String merupakan sebuah objek yang khas, karena
+\begin{description}
+	\item{$\bullet$} String bersifat tidak dappat berubah
+	\item{$\bullet$} String tidak memiliki atribut
+	\item{$\bullet$} Kita tidak harus menggunakan perintah \textbf{new} untuk membuat objek String
+\end{description}
+Pada chapter ini, kita akan menggunakan 2 objek dari Java Libraries, Point dan Rectangle. Sebelumnya saya ingin memperjelas bahwa Point dan Rectangles bukan merupakan grafik objek yang tampak di layar. Tetapi merupakan sebuah nilai yang berisi sebuah data seerti data dengan tipe \textbf{int}s atau \textbf{double}s. Seperti nilai - nilai lainnya, point dan rectangle digunakan secara internal untuk melakukan komputasi.
+
+\section{Paket (Package)}
+Java Libraries dibagi ke dalam paket paket yang terdiri dari \textbf{Java.lang} dimana terdapat banyak class class yang kita gunakan, dan \textbf{Java.awt}, \textbf{Abstract Window Toolkit (AWT)}, terdiri dari class class untuk untuk banyak windows, tombol (buttons), grafik (graphics) dan yang lainnya.
+
+Untuk menggunakan class yang berada di paket lain, kita harus mengimport class nya terlebih dahulu. \textbf{Point} dan \textbf{Rectangle} berada dalam paket Java.awt, jadi untuk mengimport keduanya seperti ini:\\
+\\
+	\textcolor{blue}{import} java.awt.Point \\
+	\textcolor{blue}{import} java.awt.Rectangles \\
+
+
+Semua statements import diletakkan sebelum penulisan awal kode program, diluar pendeklarasian class
+Class class di java.lang seperti \textbf{Math} dan \textbf{String} sudah terimport secara otomatis dimana kita tidak perlu untuk mengimportnya.
+
+\section{Objek Point}
+Point adalah dua buah koordinat dimana kita memperlakukannya dengan bersama sebagai sebuah objek tunggal. Dalam notasi matematika, point sering dituliskan dalam sebuah tanda kurung dengan tanda koma sebagai pemisah koordinat. Contohnya, (0,0) yang menunjukkan koordinat asal, dan (z,y), dimana menunjukkan  point z ke arah unit sebelah kanan dan y ke arah unit atas dari koordinat asal.
+Dalam Java, point direpresentasikan dengan Objek \textbf{Point}. Untuk membuat point baru, kita harus menggunakan perintah \textbf{new}:
+\begin{lstlisting}
+Point blank;
+blank = new Point(3,4);
+\end{lstlisting}
+Baris pertama merupakan pnedeklarasian variable secara konvensional \textbf{blank} memiliki tipe Point.
+Baris kedua merupakan perintah untuk membuat objek baru dengan \textbf{new}, menspesifikan tipe dari objek baru, dan menyediakan argumen yang berisi koordinat dari objek point, (3,4).'
+Hasil dari perintah \textbf{new} adalah sebuah referensi ke point yang baru, begitu juga dengan \textbf{blank} terdiri dari referensi-referensi ke object yang baru yang telah di buat. Stnadar diagram yang menggambarkan alur program tersebut, seperti pada gambar berikut;
+
+\begin{figure}[H]
+	\centering \includegraphics[width=4cm, height=3cm]{images/bab-9/9_2.pdf}
+%	\caption{Proses kompilasi dan interpretasi pada bahasa Java}
+%	\label{fig:binaryTreeRekursif}
+\end{figure}
+
+Sebagaimana biasanya, nama variabel \textbf{blank} tampak di luar kotak dan nilainya tampak di dalam kotak. Pada kasus ini, Nilai adalah referensi dimana secara grafis ditunjukkan dengan gambar panah. Gambar panah menunjuk ke objek yang menjadi referensi. 
+Kotak besar memperlihatkan objek baru yang dibuat dengan nilai nilai di dalamnya. \textbf{z} dan \textbf{y} merupakan nama dari \textbf{Instance Variable}.
+Kita simpulkan, semua variabel, nilai dan objek dalam program kita sebut dengan \textbf{state}. Diagram-diagram seperti diagram diatas yang memperlihatkan state dari sebuah program kita \textbf{state diagrams}. Sebagamana berjalannnya program, state akan akan mungkin berubah, sehingga kita harus berfikir sebuah state diagram sebagai gambaran dari point tertentu dalam proses eksekusi.
+
+/\section{Variabel Instance (Instance Variable)}
+Potongan data yang kita buat sebagai objek, kita sebut dengan \textbf{Instance Variable}, karena setiap onjek dimana instance dari tipe nya sendiri, memiliki salinan miliknya sendiri dari \textbf{Instance Variables}.
+Seperti sebuah bagian tertentu dari sebuah mobil, Setiap mobil memiliki sebuah instance dari tipe "car' dan setiap mobil memiliki bagian tertentu sendiri. Jika kami meminta saya untuk mengambil sesuatu dari bagian tertentu sebuah mobil, kamu haru memberitahu mobil mana yang kamu miliki.
+Demikian pula, jika kita ingin membaca nilai dari sebuah instance variable, kita harus menspesifikan terlebih dahulu objek dimana kita dapat menemukan instance variable tersebut. Dalam Java, untuk melakukan ini, kita menggunakan "notasi titik".
+\\
+\textcolor{blue}{int} x = blank.x;
+\\
+Ekspresi \textbf{blank.x} berarti "Menuju objek blank sebagai referensi, dan mendapatkan nilai x pada objek blank". Pada kasus ini, kita menetapkan nilai sebagai \textit{local variable} dengan nama \textbf{x}. Tidak ada masalah antara variable local dengan nama \textbf{x} dan instance variable dengan nama \textbf{x}. Tujuan dari "notasi titik" untuk mengidentfikasi variabel yang diacu tidak ambigu.
+Kita dapat menggunakan notasi titik sebagai bagian dari Java expression. berikut contoh yang benar:
+
+\begin{lstlisting}
+System.out.println(blank.x + ", " + blank.y);
+int distance = blank.x * blank.x + blank.y * blank.y;
+\end{lstlisting}
+
+Baris pertama akan mnampilkan 3, 4 dan baris kedua akan menghitunga nilai dengan hasil 25.
+
+\section{Objek Sebagai Parameter}
+Kita dapat membuat objek sebagai parameter sebagaimana cara biasanya. contoh:
+
+\begin{lstlisting}
+	public static void printPoint(Point p){
+		System.out.println("(" + p.x + ", " + p.y + ")");
+	}
+\end{lstlisting}
+
+Method ini mengambil point sebagai argument dan mencetaknya dengan format standar. Jika kita memanggul \textbf{printPoint(blank)}, maka akan mencetak \textbf{(3,4)}. Sebenarnya, Java sudah memiliki method untuk mencetak sejumlah Point. Jika kita memanggil\\ 
+\textbf{System.out.print(blank)} \\
+maka keluarannya adalah\\ \textbf{Java.awt.Points[x=3,y=4]} \\
+
+Ini adalah format standar Java yang digunakan untuk mencetak objek. dan juga mencetak nama tipenya, diikuti dengan nama nama dan nilai nilai dari Instance Variable.
+Contoh kedua, kita akan menulis kembali method \textbf{jarak} dari Section 6.2, jadi kita akan membuat dua Point sebagai parameter sebagai ganti dari empat \textbf{doubles}
+ 
+\begin{lstlisting}
+	public static double distance(Point p1, point p2){
+		double dx = (double) (p2.x - p1.x);
+		double dy = (double) (p2.y - p1.y);
+	}
+\end{lstlisting}
+
+tipe cast sebenarnya tidak terlalu dibutuhkan, kita tambahkan hanya sebagai pengingat bahwa Instance Variable di Point adalah integer.
+
+\section{Persegi Panjang (Rectangle)}
+Rectangle sama seperti Point, tetapi Rectangle memiliki empat Instace Variables \textbf{x, y, width} dan \textbf{height}. Selain itu semuanya sama.
+Contoh untuk membuat Objek \textbf{Rectangle} dan membuat kotak yang mereferensikan ke Rectangle.\\
+\\
+\textbf{Rectangle box =} \textcolor{blue}{new} \textbf{Rectangle (0, 0, 100, 200);} \\
+\\
+Gambbar berikut memperlihatkan representasinya:
+\begin{figure}[H]
+	\centering \includegraphics[width=4cm, height=3cm]{images/bab-9/9_5.pdf}
+	%	\caption{Proses kompilasi dan interpretasi pada bahasa Java}
+	%	\label{fig:binaryTreeRekursif}
+\end{figure}
+Jika kita mencetak \textbf{box}, maka hasilnya\\
+\\
+\textbf{java.awt.Rectangle(x=0,y==0,width=100,height=200)}\\
+\\
+Sekali lagi, ini adalah hasil dari method java yang diketahui untuk mencetak \textbf{Objek Rectangle}
+
+\section{Objek Sebagai Tipe Pengembalian}
+Kita dapat membuat sebuah method dengan tipe pengembalian berupa \textbf{Objek}. Contoh, \textbf{findCenter} mengambil \textbf{Rectangle} sebagai argument dan mengembalikan Point berupa koordinat center dari Rectangle.
+
+\begin{lstlisting}
+	public static Point findCenter(Rectangle box) {
+		int x = box.x + box.width/2;
+		int y = box.y + box.height/2;
+		return new Point(x, y);
+	}
+\end{lstlisting}
+
+catatan: kita dapat menggunakan perintah \textbf{new} untuk membuat sebuah objek dan kemudian juga bisa digunakan langsung sebagai nilai balikan dari sebuah method.
+
+\section{Object Yang Dapat Berubah}
+Kita dapat mengubah konten pada sebuah objek dengan melakukan assignment untuk salah satu Instance Variable. Contoh, Untuk memindahkan Rectangle tanpa mengganti ukurannya, kita dapat memodifikasi nilai x dan y.//
+	box.x = box.x + 50;//
+	box.y = box.y + 100;//
+Hasilnya terlihat pada gambar berikut://
+\begin{figure}[H]
+	\centering \includegraphics[width=4cm, height=3cm]{images/bab-9/9_7.pdf}
+	%	\caption{Proses kompilasi dan interpretasi pada bahasa Java}
+	%	\label{fig:binaryTreeRekursif}
+\end{figure}
+Kita dapat mengenkapsulasi kode ini dalam sebuah method dan mengeneralisir untuk memindahkan rectangle dengan jumlah appapun.
+\begin{lstlisting}
+	public static void moveRec(Rectangle box, int dx, int dy){
+		box.x = box.x + dx;
+		box.y = box.y + dy;
+	}
+\end{lstlisting}
+Variable dx dan dy mengindikasikan seberapa jauh perpindahan Rectangle pada setiap arah. Pemanggilan method ini akan memberikan efek pada perubahan Rectangle setelah eksekusi baris yang berisi argumen.
+\begin{lstlisting}
+	Rectangle box = new Rectangle(0, 0, 100, 200);
+	moveRect(box, 50, 100);
+	System.out.println(box);
+\end{lstlisting}
+Hasilnya: \\ 
+\textbf{java.awt.Rectangle[x==50,y=100,width=100,height=200]}. \\ 
+Modifikasi Objek dengan memberikan sebuah argumen pada method akan sangan bermanfaat. tetapi ini dapat membuat proses debugging menjadi lebih sulit. Ini tidak selamanya jelas dimana terjadi pemanggilan method atau tidak melakukan modifikasi argument. Selanjutnya, kita akan membahas pro dan kontra dengan gaya pemrograman seperti ini.
+Java menyediakan kumpulan method yang digunakan untuk mengoperasikan Point dan Rectangle. Kalian bisa baca dokumentasinya di \textcolor{blue}{http://download.oracle.com/javase/6/docs/ api/java/awt/Point.html and http://download.oracle.com/javase/6/ docs/api/java/awt/Rectangle.html.}
+\\
+Contoh: \textbf{translate} memiliki fungsi yang sama dengan \textbf{moveRec}, sebagai pengganti menggunakan Rectangle sebagai argument, kita dapat menggunkan notasi titik 
+	
+	box.translate(50, 100); \\
+	
+\section{Alias}
+Ingat, ketika kita menetapkan sebuah objek ke dalam sebuah variabel, kita menetapkan sebuah referensi ke objek. Ini memungkinkan banyak variable yang memiliki referensi yang sama ke sebuah objek. Contoh:
+
+\begin{lstlisting}
+	Rectangle box1 = new Rectangle(0, 0, 100, 200);
+	Rectangle box2 = box1;
+\end{lstlisting}
+
+State Diagaram yang dihasilkan seperti gambar berikut \\
+\begin{figure}[H]
+	\centering \includegraphics[width=4cm, height=3cm]{images/bab-9/9_8.pdf}
+	%	\caption{Proses kompilasi dan interpretasi pada bahasa Java}
+	%	\label{fig:binaryTreeRekursif}
+\end{figure}
+box1 dan box2 memiliki referensi objek yang sama. Ketika seseorang menggunakan dua name, kita sebut dengan istilah \textbf{alias} begitu juga dengan objek, berlaku hal yang sama.
+Ketika dua variabel dialiaskan, perubahan yang terjadi pada satu variabel akan berpengaruh pada variabel yang lain juga. Contoh
+\begin{lstlisting}
+	System.out.println(box2.width);
+	box1.grow(50, 50)
+	System.out.printlln(box2.width);
+\end{lstlisting}
+
+Bais pertama akan mencetak nilai 100, dimana variabel width pada Objek Rectangle juga menjadi referensi oleh box2. Pada baris kedua, memanggil method grow pada box1, dimana memeprluas Rectangle dengan 50 pixels di setiap arah. (Lihat dokumentasi untuk lebih lengkapnya). Efeknya terliah pada gambar berikut: \\
+\begin{figure}[H]
+	\centering \includegraphics[width=4cm, height=3cm]{images/bab-9/9_8_2.pdf}
+	%	\caption{Proses kompilasi dan interpretasi pada bahasa Java}
+	%	\label{fig:binaryTreeRekursif}
+\end{figure}
+
+Perubahan apapun yang terjadi pada \textbf{box1} akan berlaku juga pada \textbf{box2}. Selanjutnya, nilai yang tercetak pada baris ketiga adalah 200, nilai width yang sudah diperluas pada Rectangle. (Sebagaimana diatas, ini dibenarkan untuk koordinat dari sebuah Rectangle bernilai negatif).
+
+\section{Null}
+Ketika kita membuat sebuah variabel objek, Ingat, bahwa kita membuat referensi ke object tersebut. Sebelum kita membuat sebuah variabel yang menunjuk ke sebuah objek, maka nilai dari variabel \textbf{null}. \textbf{null} adalah nilai spesial (dan kata kunci java) yang berarti "Tidak ada objek".
+
+Pendeklarasian \textbf{Point blank;} sama dengan inisialisasi berikut : \\
+\begin{lstlisting}
+	Point blank = null;
+\end{lstlisting}
+Dan direpresentasikan dengan state diagaram seperti berikut:\\
+\begin{figure}[H]
+	\centering \includegraphics[width=4cm, height=3cm]{images/bab-9/9_9.pdf}
+	%	\caption{Proses kompilasi dan interpretasi pada bahasa Java}
+	%	\label{fig:binaryTreeRekursif}
+\end{figure}
+Nilai null direpresentasikan dengan sebuah kotak kecil dengan tidak ada arah.
+
+Jika kita mencoba menggunakan objek null, baik dengan mengakses Instance Variable atau memanggil method, Java akan melempar \textbf{NullPointerException}, mencetak pesan error dan mengakhiri program.
+
+\begin{lstlisting}
+	Point blank = null;
+	int x = blank.x;				//NullpointerException
+	blank.translate(50, 50);		//NullPointerException	
+\end{lstlisting}
+Di sisi lain, sah saja untuk memberlakukan objek null sebagai argumen atau menerima sebagai nilai balikan.
+
+\section{Koleksi Sampah (Garbage Collection)}
+Di Sesi 9.8 kita telah membahas tentang apa yang terjadi ketika lebih dari satu variabel memiliki referensi yang sama ke sebuah objek. Apa yang terjadi ketika tidak ada satu variabel pun yang mereferensikan ke sebuah objek. Contoh:
+\begin{lstlisting}
+	Point blank = new Point(3, 4);
+	blank = null
+\end{lstlisting}
+Pada baris pertama, kita membuat objek Point baru dan membuat variabel blank yang mereferensikannya. Pada baris kedua, variabel blank dirubah dari yang mereferensikan ke Point menjadi tidak mereferensikan kemanapun (objek null).
+\begin{figure}[H]
+	\centering \includegraphics[width=4cm, height=3cm]{images/bab-9/9_10.pdf}
+	%	\caption{Proses kompilasi dan interpretasi pada bahasa Java}
+	%	\label{fig:binaryTreeRekursif}
+\end{figure}
+Jika tidak ada yang mereferensikan ke sebuah objek, kemudian tidak ada yang dapat membaca atau menulis nilai dari objek tersebut, atau memanggil method darinya. Ini sebenarnya tidak ada. Kita dapat menyimpan objek dalam sebuah memory, tapi ini akan menghabiskan kapasitas memory. Jadi secara berkala, sebagaimana program berjalan, Sistem akan mencari objek yang tak terpakai dan menghapusnya. Proses ini disebut \textbf{Garbage Collection}. Selanjutnya, kapasitas memory akan digunakan oleh objek yang tersedia untuk digunakan sebagai objek baru.
+Kita tidak harus melakukan apapun untuk membuat Garbage Collection terjadi. Dan pada umumnya, kita idak akan menyadari hal itu. tapi perlu diketahui, prosesnya berjalan secara berkala di sistem.
+
+\section{Objek dan Primitif}
+Ada dua jenis tipe di Java. Tipe primitif dan tipe objek. Tipe primitif seperti \textbf{int} dan \textbf{boolean} yang diawali dengan huruf kecil. Tipe objek diawali dengan huruf besar. Perbedan ini sangat bermanfaat karena mengingatkan kita untuk membedakan diantara keduanya.
+
+\begin{itemize}
+\item Ketika kita mendeklarasikan variabel bertipe primitif, di memory, akan mendapatkan kapasitas untuk nilai primitif. Ketika kita mendeklarasikan variabel bertipe objek / tipe data reference, di memory akan mendapatkan kapasitas untuk referensi ke sebuah objek. Untuk mendapatkan kapasitas memory untuk sebuah objek, kita harus menggunakan perintah \textbf{new}.
+\item Jika kita tidak menginisialisasi sebuah variabel bertipe primitif. maka akan diberikan nilai stnadar/ default tergantung dari tipenya. Contoh: nilai 0 untuk int, false untuk boolean. Nilai default dari variabel bertipe objek adalah null yang mengindikasikan sebuah objek.
+\item Variabel bertipe primitif terisolasi dengan baik dalam arti seperti tidak ada. Kita dapat melakukan di salah satu method yang akan mempengaruhi variabel di method lain. Variabel objek akan menjadi rumit untuk bekerja dengannya karena mereka tidak terisolasi dengan baik. Jika memperlakukan sebuah referensi untuk sebuah objek sebagai sebuah argumen, Method yang kita panggil akan memodifikasi objek dimana kasusnya akan kamu lihat efeknya. Tentu itu akan menjadi sesuatu yang bagus, tapi kamu harus menyadari itu.
+\end{itemize}
+Ada satu perbedaan lain antara tipe primitif dan tipe objek, kita tidak dapat menambahkan sebuah tipe primitif baru di java. (kecuali kalau kita mendapatkan aturannya di standar komite), tetapi kita dapat membuat membuat tipe objek baru. Kita akan lihat bagaimana caranya di chapter selanjutnya.
+
+\section{Ringkasan}
+
+\begin{description}
+\item [Paket :] Koleksi / kumpulan class class. Clas class Java terorganisir dalam sebuah paket.
+\item[AWT] The Abstract Window Toolkit, salah satu Paket Java yang terbesar dan paling umum digunkan.
+\item[Instance :] Contoh dari sebuah kategori. Kucingku adalah contoh dari kategori "Jenis kucing". Semua objek adalah instance dari dari beberapa class.
+\item[Instance Variable :] Salah satu nama dari tipe data yang digunakan untuk membuat sebuah objek. Setiap objek (Instance) memliki salinan sendiri dari dari Instance variable  untuk class miliknya.
+\item[Reference :] Nilai yang mengindikasikan sebuah objek. Pada State Diagaram, reference tampak seperti gambar sebuah arah.
+\item[Alias :] Kondisi dimana dua atau lebih variabel yang memiliki referensi ke objek yang sama.
+\item[Koleksi Sampah :] Proses untuk menemukan objek yang tidak memiliki referensi dan menghapusnya dari memory.
+\item[State :] Deskripsi lengkap dari semua varaibel dan objek serta nilai-nilainya,pada titik tertentu selama program dieksekusi.
+\item[State Diagram :] Bentuk grafis / gambar dari state sebuah program.
+\end{description} 
+\section{Latihan}
+\textbf{Latihan 9.1.}\\
+\begin{enumerate}
+\item untuk program berikut, Gambar stack diagram yang menampilkan lokal variabel dan parameter dari main dan riddle, dan tunjukkan variable bertipe objek yang memiliki referensi.
+\item Apa keluaran dari program tersebut?
+\begin{lstlisting}
+public void main (String [] args ) {
+	int x = 5;
+	Point blank = new Point(1, 2);
+	System.out.println(riddle(x, blank));
+	System.out.println(x);
+	System.out.println(blank.x);
+	System.out.println(blank.y);
+}
+
+public static int riddle(int x, Point p){
+	x = x + 7;
+	return x + p.x + p.y;
+}
+\end{lstlisting}
+Poin dari latihan ini adalah untuk membuat kamu paham mekanisme untuk memberlakukan objek sebagai parameter.
+\end{enumerate}
+\textbf{Latihan 9.2.}\\
+\begin{enumerate}
+\item Untuk program berikut, Gambarkan stack diagram yang menampilkan state dari sebuah program sebelum mengembalikan nilai jarak. Termasuk semua variabel dan parameter dan variabel objek yang memiliki referensi.
+\item Apa output program tersebut?
+\begin{lstlisting}
+public static double distance(point p1, Point p2) {
+int dx = p1.x - p2.x;
+int dy = p1.y - p2.y;
+return Math.sqrt(dx * dx + dy * dy);
+}
+
+Public static Point findCenter(Rectangle box){
+int x = box.x + box.width/2;
+int y = box.y + box.height/2;
+return new Point(x,y);
+}
+
+public static void main (String [] args ) {
+Point blank = new Point(5, 8);
+
+Rectangle rect = new Rectangle(0, 2, 4, 4);
+Point center = findCenter(rect);
+
+double dist = distance(center, blank);
+
+System.out.println(dist);
+}
+\end{lstlisting}
+\end{enumerate}
+\textbf{Latihan 9.3.}\\
+Method grow adalah bagian dari class Rectangle. Baca dokumentasinya  dibawah ini:
+\begin{figure}[H]
+	\centering \includegraphics[width=6cm, height=4cm]{images/bab-9/link.pdf}
+	%	\caption{Proses kompilasi dan interpretasi pada bahasa Java}
+	%	\label{fig:binaryTreeRekursif}
+\end{figure}
+\begin{enumerate}
+	\item Apa output program berikut?
+	\item Gambarkan state diagram yang menunjukkan state dari program sebelum akhir dari method main. Termasuk semua lokal variabel dan objek.
+	\item Pada akhir method main, apakah p1 dan p2 merupakan alias? Jelaskan!
+\begin{lstlisting}
+public static void printPoint(Point p) {
+	System.out.println("(" + p.x + ", " + p.y + +")");
+	}
+	
+public static Point findCenter(Rectangle box){
+	int x = box.x + box.width/2;
+	int y = box.y + box.height/2;
+	return new Point(x,y);
+	}
+	
+public static void main (String [] args) {
+	Rectangle box1 = new Rectangle(2, 4, 7, 9);
+	Point p1 = findCenter(box1);
+	printPoint(p1);
+	
+	box1.grow(1, 1);
+	Point p2 = findCenter(box1);
+	printPoint(p2);
+	}
+\end{lstlisting}
+\end{enumerate}
+\textbf{Latihan 9.4.}\\
+Mungkin kamu bosan dengan method faktorial, tapi kita akan melakukan lebih dari satu versi.
+\begin{enumerate}
+\item Buat sebuah program baru dengan nama Big.java dan tulis versi iteratif dari faktorial.
+\item Cetak sebuah tabel dari nilai integer dari 0 - 30 bersama faktorial. Di beberapa titik sekitar 15, kamu mungkin akan melihat bahwa jawaban tidak lagi benar Jelaskan!
+\item BigInteger adalah objek Java yang dapat merepresentasikan semaunya Big Integer. Tidak ada batas atas kecuali limit ukuran memory dan kecepatan proses. Baca dokumentasi BigIntegers di \textcolor{blue}{http://download.oracle.com/javase/6/docs/api/java/ math/BigInteger.html}.
+\item Untuk menggunakan BigIntegers, kita harus menambahkan \textbf{import java.math.BigInteger} pada awal penulisan kode program.
+\item Ada beberapa cara untuk membuat BigInteger, tapi yang kami rekomendasikan menggunakan \textbf{valueOf}. Berikut kode untuk konversi integer menjadi BigInteger.
+\begin{lstlisting}
+	int x = 17;
+	BigInteger big = new BigInteger.valueOf(x);
+\end{lstlisting}
+Ketik dan coba kode ini, coba untuk cetak BigInteger.
+\item Karena BigInteger bukan tipe primitif, Biasanya operasi matematika tidak bekerja, Sebagai gantinya kita harus menggunakan method seperti \textbf{add}. Untuk menambah dua BigInteger, panggil method add pada salah satu BigInteger dan jadikan yang satu lagi sebagai argument. Contoh
+\begin{lstlisting}
+	BigInteger small = BigInteger.valueOf(17);
+	BigInteger big = BigInteger.valueOf(1700000000);
+	BigInteger total = small.add(big);
+\end{lstlisting}
+Coba beberapa method lain, sepeti \textbf{multiply} dan \textbf{pow}.
+\item Konversi Faktorial sehingga dapat melakukan perhitungan menggunakan BigInteger dan mengembalikan BigInteger sebagai hasilnya. Kamu dapat tinggalkan parameternya, dia akan menjadi integer.
+\item Coba cetak tabel lagi meyhod faktorial yang sudah dimodifikasi. Apakah benar mencapai nilai 30?. Seberapa tinggi nilai yang dapat dibuat?. Kita hitung faktorial dari semua nomor dari 0 sampai 999. tetapi mesin kita sangat lambat, sehingga memakan waktu agak lama.  Nomor terakhir 999, memiliki 2565 digit.
+\end{enumerate}
+\textbf{Latihan 9.5.}\\
+Banyak teknik teknik enkripsi, tergantung dari kemampuan menaikkan large integer ke integer power. berikut meyhod yang mengimplementasikan (layak) teknik cepat eksponensiasi integer.
+\begin{lstlisting}
+public static int pow (int x, int n) {
+	if (x==0) return1;
+	
+	// temukan nilai x ke n/2 dengan rekursif
+	int t = pow (x, n/2);
+	
+	// jika n genap, hasilnya t kuadrat
+	// jika n ganjil, hasilnya t kuadrat kali x
+	
+	if (n%2 == 0){
+		return t*t;
+	} else {
+		return t*t*t;
+	}
+}			
+}
+\end{lstlisting}
+Permasalahan pada method ini adalah, hanya dapat bekerja jika hasilnya lebih kecil dari 2 miliar. Menulis ulangnya, hasilnya menjadi BigInteger. Parameter harus berupa integer, meskipun, pada BigInteger, kita dapat menggunakan method \textbf{add} dan \textbf{multiply}. tapi jangan gunakan \textbf{pow} dimana menjadi tidak nyaman.
